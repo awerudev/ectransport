@@ -1,0 +1,672 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18344B1F2ABA341F006B8DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18344B1E2ABA341F006B8DB4 /* AppDelegate.swift */; };
+		18344B212ABA341F006B8DB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18344B202ABA341F006B8DB4 /* SceneDelegate.swift */; };
+		18344B262ABA341F006B8DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18344B242ABA341F006B8DB4 /* Main.storyboard */; };
+		18344B282ABA3421006B8DB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18344B272ABA3421006B8DB4 /* Assets.xcassets */; };
+		18344B2B2ABA3421006B8DB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18344B292ABA3421006B8DB4 /* LaunchScreen.storyboard */; };
+		18344B342ABA36FC006B8DB4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B332ABA36FC006B8DB4 /* FirebaseAnalytics */; };
+		18344B362ABA36FD006B8DB4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B352ABA36FD006B8DB4 /* FirebaseAuth */; };
+		18344B382ABA36FD006B8DB4 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B372ABA36FD006B8DB4 /* FirebaseCrashlytics */; };
+		18344B3A2ABA36FD006B8DB4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B392ABA36FD006B8DB4 /* FirebaseDatabase */; };
+		18344B3C2ABA36FD006B8DB4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B3B2ABA36FD006B8DB4 /* FirebaseFirestore */; };
+		18344B3E2ABA36FD006B8DB4 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B3D2ABA36FD006B8DB4 /* FirebaseFunctions */; };
+		18344B402ABA36FD006B8DB4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B3F2ABA36FD006B8DB4 /* FirebaseMessaging */; };
+		18344B422ABA36FD006B8DB4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B412ABA36FD006B8DB4 /* FirebaseStorage */; };
+		18344B442ABA3ACD006B8DB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18344B432ABA3ACD006B8DB4 /* GoogleService-Info.plist */; };
+		18344B4A2ABA3C04006B8DB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18344B492ABA3C04006B8DB4 /* LoginViewController.swift */; };
+		18344B602ABA3E0F006B8DB4 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B4E2ABA3E0F006B8DB4 /* Montserrat-LightItalic.ttf */; };
+		18344B612ABA3E0F006B8DB4 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B4F2ABA3E0F006B8DB4 /* Montserrat-Medium.ttf */; };
+		18344B622ABA3E0F006B8DB4 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B502ABA3E0F006B8DB4 /* Montserrat-BoldItalic.ttf */; };
+		18344B632ABA3E0F006B8DB4 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B512ABA3E0F006B8DB4 /* Montserrat-Light.ttf */; };
+		18344B642ABA3E0F006B8DB4 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B522ABA3E0F006B8DB4 /* Montserrat-ThinItalic.ttf */; };
+		18344B652ABA3E0F006B8DB4 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B532ABA3E0F006B8DB4 /* Montserrat-ExtraLight.ttf */; };
+		18344B662ABA3E0F006B8DB4 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B542ABA3E0F006B8DB4 /* Montserrat-Thin.ttf */; };
+		18344B672ABA3E0F006B8DB4 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B552ABA3E0F006B8DB4 /* Montserrat-Bold.ttf */; };
+		18344B682ABA3E0F006B8DB4 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B562ABA3E0F006B8DB4 /* Montserrat-MediumItalic.ttf */; };
+		18344B692ABA3E0F006B8DB4 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B572ABA3E0F006B8DB4 /* Montserrat-BlackItalic.ttf */; };
+		18344B6A2ABA3E0F006B8DB4 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B582ABA3E0F006B8DB4 /* Montserrat-SemiBold.ttf */; };
+		18344B6B2ABA3E0F006B8DB4 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B592ABA3E0F006B8DB4 /* Montserrat-ExtraLightItalic.ttf */; };
+		18344B6C2ABA3E0F006B8DB4 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5A2ABA3E0F006B8DB4 /* Montserrat-ExtraBold.ttf */; };
+		18344B6D2ABA3E0F006B8DB4 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5B2ABA3E0F006B8DB4 /* Montserrat-Black.ttf */; };
+		18344B6E2ABA3E0F006B8DB4 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5C2ABA3E0F006B8DB4 /* Montserrat-Regular.ttf */; };
+		18344B6F2ABA3E0F006B8DB4 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5D2ABA3E0F006B8DB4 /* Montserrat-Italic.ttf */; };
+		18344B702ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */; };
+		18344B712ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */; };
+		18344B742ABA48A5006B8DB4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B732ABA48A5006B8DB4 /* IQKeyboardManagerSwift */; };
+		6904CE00179344D8F32F923D /* Pods_cargo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2FEDAB29C285B3569D110A /* Pods_cargo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F2FEDAB29C285B3569D110A /* Pods_cargo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cargo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18344B1B2ABA341F006B8DB4 /* cargo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cargo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18344B1E2ABA341F006B8DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		18344B202ABA341F006B8DB4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		18344B252ABA341F006B8DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		18344B272ABA3421006B8DB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18344B2A2ABA3421006B8DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		18344B2C2ABA3421006B8DB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18344B432ABA3ACD006B8DB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18344B492ABA3C04006B8DB4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		18344B4E2ABA3E0F006B8DB4 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
+		18344B4F2ABA3E0F006B8DB4 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		18344B502ABA3E0F006B8DB4 /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
+		18344B512ABA3E0F006B8DB4 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		18344B522ABA3E0F006B8DB4 /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
+		18344B532ABA3E0F006B8DB4 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
+		18344B542ABA3E0F006B8DB4 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		18344B552ABA3E0F006B8DB4 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		18344B562ABA3E0F006B8DB4 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
+		18344B572ABA3E0F006B8DB4 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
+		18344B582ABA3E0F006B8DB4 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		18344B592ABA3E0F006B8DB4 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		18344B5A2ABA3E0F006B8DB4 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		18344B5B2ABA3E0F006B8DB4 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		18344B5C2ABA3E0F006B8DB4 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		18344B5D2ABA3E0F006B8DB4 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		321665084E8A5BC6EA4662B5 /* Pods-cargo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cargo.debug.xcconfig"; path = "Target Support Files/Pods-cargo/Pods-cargo.debug.xcconfig"; sourceTree = "<group>"; };
+		687264387A3DB2AC6567D02F /* Pods-cargo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cargo.release.xcconfig"; path = "Target Support Files/Pods-cargo/Pods-cargo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		18344B182ABA341F006B8DB4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18344B382ABA36FD006B8DB4 /* FirebaseCrashlytics in Frameworks */,
+				18344B342ABA36FC006B8DB4 /* FirebaseAnalytics in Frameworks */,
+				18344B402ABA36FD006B8DB4 /* FirebaseMessaging in Frameworks */,
+				18344B3A2ABA36FD006B8DB4 /* FirebaseDatabase in Frameworks */,
+				18344B3E2ABA36FD006B8DB4 /* FirebaseFunctions in Frameworks */,
+				18344B742ABA48A5006B8DB4 /* IQKeyboardManagerSwift in Frameworks */,
+				18344B422ABA36FD006B8DB4 /* FirebaseStorage in Frameworks */,
+				18344B3C2ABA36FD006B8DB4 /* FirebaseFirestore in Frameworks */,
+				18344B362ABA36FD006B8DB4 /* FirebaseAuth in Frameworks */,
+				6904CE00179344D8F32F923D /* Pods_cargo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18344B122ABA341F006B8DB4 = {
+			isa = PBXGroup;
+			children = (
+				18344B1D2ABA341F006B8DB4 /* cargo */,
+				18344B1C2ABA341F006B8DB4 /* Products */,
+				7940ACF0DEAD2CEE4C6D5729 /* Pods */,
+				386987982C054B563EEBD6FC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		18344B1C2ABA341F006B8DB4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18344B1B2ABA341F006B8DB4 /* cargo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18344B1D2ABA341F006B8DB4 /* cargo */ = {
+			isa = PBXGroup;
+			children = (
+				18344B4B2ABA3E0F006B8DB4 /* Resource */,
+				18344B482ABA3BD6006B8DB4 /* Utility */,
+				18344B472ABA3BD2006B8DB4 /* Service */,
+				18344B462ABA3BCD006B8DB4 /* Model */,
+				18344B452ABA3BC1006B8DB4 /* ViewController */,
+				18344B1E2ABA341F006B8DB4 /* AppDelegate.swift */,
+				18344B202ABA341F006B8DB4 /* SceneDelegate.swift */,
+				18344B242ABA341F006B8DB4 /* Main.storyboard */,
+				18344B272ABA3421006B8DB4 /* Assets.xcassets */,
+				18344B292ABA3421006B8DB4 /* LaunchScreen.storyboard */,
+				18344B2C2ABA3421006B8DB4 /* Info.plist */,
+				18344B432ABA3ACD006B8DB4 /* GoogleService-Info.plist */,
+			);
+			path = cargo;
+			sourceTree = "<group>";
+		};
+		18344B452ABA3BC1006B8DB4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				18344B492ABA3C04006B8DB4 /* LoginViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		18344B462ABA3BCD006B8DB4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18344B472ABA3BD2006B8DB4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		18344B482ABA3BD6006B8DB4 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		18344B4B2ABA3E0F006B8DB4 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				18344B4C2ABA3E0F006B8DB4 /* Font */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		18344B4C2ABA3E0F006B8DB4 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				18344B4D2ABA3E0F006B8DB4 /* Montserrat */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		18344B4D2ABA3E0F006B8DB4 /* Montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				18344B4E2ABA3E0F006B8DB4 /* Montserrat-LightItalic.ttf */,
+				18344B4F2ABA3E0F006B8DB4 /* Montserrat-Medium.ttf */,
+				18344B502ABA3E0F006B8DB4 /* Montserrat-BoldItalic.ttf */,
+				18344B512ABA3E0F006B8DB4 /* Montserrat-Light.ttf */,
+				18344B522ABA3E0F006B8DB4 /* Montserrat-ThinItalic.ttf */,
+				18344B532ABA3E0F006B8DB4 /* Montserrat-ExtraLight.ttf */,
+				18344B542ABA3E0F006B8DB4 /* Montserrat-Thin.ttf */,
+				18344B552ABA3E0F006B8DB4 /* Montserrat-Bold.ttf */,
+				18344B562ABA3E0F006B8DB4 /* Montserrat-MediumItalic.ttf */,
+				18344B572ABA3E0F006B8DB4 /* Montserrat-BlackItalic.ttf */,
+				18344B582ABA3E0F006B8DB4 /* Montserrat-SemiBold.ttf */,
+				18344B592ABA3E0F006B8DB4 /* Montserrat-ExtraLightItalic.ttf */,
+				18344B5A2ABA3E0F006B8DB4 /* Montserrat-ExtraBold.ttf */,
+				18344B5B2ABA3E0F006B8DB4 /* Montserrat-Black.ttf */,
+				18344B5C2ABA3E0F006B8DB4 /* Montserrat-Regular.ttf */,
+				18344B5D2ABA3E0F006B8DB4 /* Montserrat-Italic.ttf */,
+				18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */,
+				18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */,
+			);
+			path = Montserrat;
+			sourceTree = "<group>";
+		};
+		386987982C054B563EEBD6FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0F2FEDAB29C285B3569D110A /* Pods_cargo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7940ACF0DEAD2CEE4C6D5729 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				321665084E8A5BC6EA4662B5 /* Pods-cargo.debug.xcconfig */,
+				687264387A3DB2AC6567D02F /* Pods-cargo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		18344B1A2ABA341F006B8DB4 /* cargo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18344B2F2ABA3421006B8DB4 /* Build configuration list for PBXNativeTarget "cargo" */;
+			buildPhases = (
+				951382C9CA793D0433E7549C /* [CP] Check Pods Manifest.lock */,
+				18344B172ABA341F006B8DB4 /* Sources */,
+				18344B182ABA341F006B8DB4 /* Frameworks */,
+				18344B192ABA341F006B8DB4 /* Resources */,
+				0337BC7CE54F406FB88140C4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cargo;
+			packageProductDependencies = (
+				18344B332ABA36FC006B8DB4 /* FirebaseAnalytics */,
+				18344B352ABA36FD006B8DB4 /* FirebaseAuth */,
+				18344B372ABA36FD006B8DB4 /* FirebaseCrashlytics */,
+				18344B392ABA36FD006B8DB4 /* FirebaseDatabase */,
+				18344B3B2ABA36FD006B8DB4 /* FirebaseFirestore */,
+				18344B3D2ABA36FD006B8DB4 /* FirebaseFunctions */,
+				18344B3F2ABA36FD006B8DB4 /* FirebaseMessaging */,
+				18344B412ABA36FD006B8DB4 /* FirebaseStorage */,
+				18344B732ABA48A5006B8DB4 /* IQKeyboardManagerSwift */,
+			);
+			productName = cargo;
+			productReference = 18344B1B2ABA341F006B8DB4 /* cargo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		18344B132ABA341F006B8DB4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					18344B1A2ABA341F006B8DB4 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 18344B162ABA341F006B8DB4 /* Build configuration list for PBXProject "cargo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 18344B122ABA341F006B8DB4;
+			packageReferences = (
+				18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				18344B722ABA48A5006B8DB4 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */,
+			);
+			productRefGroup = 18344B1C2ABA341F006B8DB4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				18344B1A2ABA341F006B8DB4 /* cargo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		18344B192ABA341F006B8DB4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18344B702ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				18344B6C2ABA3E0F006B8DB4 /* Montserrat-ExtraBold.ttf in Resources */,
+				18344B2B2ABA3421006B8DB4 /* LaunchScreen.storyboard in Resources */,
+				18344B692ABA3E0F006B8DB4 /* Montserrat-BlackItalic.ttf in Resources */,
+				18344B682ABA3E0F006B8DB4 /* Montserrat-MediumItalic.ttf in Resources */,
+				18344B622ABA3E0F006B8DB4 /* Montserrat-BoldItalic.ttf in Resources */,
+				18344B442ABA3ACD006B8DB4 /* GoogleService-Info.plist in Resources */,
+				18344B282ABA3421006B8DB4 /* Assets.xcassets in Resources */,
+				18344B6E2ABA3E0F006B8DB4 /* Montserrat-Regular.ttf in Resources */,
+				18344B632ABA3E0F006B8DB4 /* Montserrat-Light.ttf in Resources */,
+				18344B642ABA3E0F006B8DB4 /* Montserrat-ThinItalic.ttf in Resources */,
+				18344B602ABA3E0F006B8DB4 /* Montserrat-LightItalic.ttf in Resources */,
+				18344B6B2ABA3E0F006B8DB4 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				18344B6A2ABA3E0F006B8DB4 /* Montserrat-SemiBold.ttf in Resources */,
+				18344B662ABA3E0F006B8DB4 /* Montserrat-Thin.ttf in Resources */,
+				18344B672ABA3E0F006B8DB4 /* Montserrat-Bold.ttf in Resources */,
+				18344B6F2ABA3E0F006B8DB4 /* Montserrat-Italic.ttf in Resources */,
+				18344B612ABA3E0F006B8DB4 /* Montserrat-Medium.ttf in Resources */,
+				18344B262ABA341F006B8DB4 /* Main.storyboard in Resources */,
+				18344B652ABA3E0F006B8DB4 /* Montserrat-ExtraLight.ttf in Resources */,
+				18344B6D2ABA3E0F006B8DB4 /* Montserrat-Black.ttf in Resources */,
+				18344B712ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0337BC7CE54F406FB88140C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cargo/Pods-cargo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cargo/Pods-cargo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cargo/Pods-cargo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		951382C9CA793D0433E7549C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cargo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		18344B172ABA341F006B8DB4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18344B4A2ABA3C04006B8DB4 /* LoginViewController.swift in Sources */,
+				18344B1F2ABA341F006B8DB4 /* AppDelegate.swift in Sources */,
+				18344B212ABA341F006B8DB4 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		18344B242ABA341F006B8DB4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18344B252ABA341F006B8DB4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		18344B292ABA3421006B8DB4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18344B2A2ABA3421006B8DB4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		18344B2D2ABA3421006B8DB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		18344B2E2ABA3421006B8DB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		18344B302ABA3421006B8DB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 321665084E8A5BC6EA4662B5 /* Pods-cargo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H56XXGRY7F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = cargo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ECT CARGO";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ect.cargo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		18344B312ABA3421006B8DB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 687264387A3DB2AC6567D02F /* Pods-cargo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H56XXGRY7F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = cargo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ECT CARGO";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ect.cargo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		18344B162ABA341F006B8DB4 /* Build configuration list for PBXProject "cargo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18344B2D2ABA3421006B8DB4 /* Debug */,
+				18344B2E2ABA3421006B8DB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18344B2F2ABA3421006B8DB4 /* Build configuration list for PBXNativeTarget "cargo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18344B302ABA3421006B8DB4 /* Debug */,
+				18344B312ABA3421006B8DB4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		18344B722ABA48A5006B8DB4 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18344B332ABA36FC006B8DB4 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		18344B352ABA36FD006B8DB4 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		18344B372ABA36FD006B8DB4 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		18344B392ABA36FD006B8DB4 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		18344B3B2ABA36FD006B8DB4 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		18344B3D2ABA36FD006B8DB4 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		18344B3F2ABA36FD006B8DB4 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		18344B412ABA36FD006B8DB4 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		18344B732ABA48A5006B8DB4 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18344B722ABA48A5006B8DB4 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 18344B132ABA341F006B8DB4 /* Project object */;
+}
