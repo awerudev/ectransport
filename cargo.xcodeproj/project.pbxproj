@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182A63002ABA9E9F00DFE8F2 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A62FF2ABA9E9F00DFE8F2 /* MainTabController.swift */; };
+		182A63022ABA9FAA00DFE8F2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A63012ABA9FAA00DFE8F2 /* HomeViewController.swift */; };
+		182A63042ABA9FB700DFE8F2 /* BidsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A63032ABA9FB700DFE8F2 /* BidsViewController.swift */; };
+		182A63062ABA9FC000DFE8F2 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A63052ABA9FC000DFE8F2 /* ChatsViewController.swift */; };
+		182A63082ABA9FC700DFE8F2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A63072ABA9FC700DFE8F2 /* ProfileViewController.swift */; };
+		182A630A2ABAA2B000DFE8F2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A63092ABAA2B000DFE8F2 /* SplashViewController.swift */; };
+		182A630C2ABAA3D500DFE8F2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A630B2ABAA3D500DFE8F2 /* Constants.swift */; };
 		18344B1F2ABA341F006B8DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18344B1E2ABA341F006B8DB4 /* AppDelegate.swift */; };
 		18344B212ABA341F006B8DB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18344B202ABA341F006B8DB4 /* SceneDelegate.swift */; };
 		18344B262ABA341F006B8DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18344B242ABA341F006B8DB4 /* Main.storyboard */; };
@@ -41,11 +48,21 @@
 		18344B702ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */; };
 		18344B712ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */; };
 		18344B742ABA48A5006B8DB4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B732ABA48A5006B8DB4 /* IQKeyboardManagerSwift */; };
+		187A3F212ABA98A200F4D189 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A3F202ABA98A200F4D189 /* BaseNavigationController.swift */; };
+		1884CFDA2ABA4A5400C5BB3B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884CFD92ABA4A5400C5BB3B /* Extensions.swift */; };
+		1884CFDC2ABA4C6300C5BB3B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884CFDB2ABA4C6300C5BB3B /* SignupViewController.swift */; };
 		6904CE00179344D8F32F923D /* Pods_cargo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2FEDAB29C285B3569D110A /* Pods_cargo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0F2FEDAB29C285B3569D110A /* Pods_cargo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cargo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		182A62FF2ABA9E9F00DFE8F2 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		182A63012ABA9FAA00DFE8F2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		182A63032ABA9FB700DFE8F2 /* BidsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidsViewController.swift; sourceTree = "<group>"; };
+		182A63052ABA9FC000DFE8F2 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		182A63072ABA9FC700DFE8F2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		182A63092ABAA2B000DFE8F2 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		182A630B2ABAA3D500DFE8F2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18344B1B2ABA341F006B8DB4 /* cargo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cargo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18344B1E2ABA341F006B8DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18344B202ABA341F006B8DB4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +90,9 @@
 		18344B5D2ABA3E0F006B8DB4 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		187A3F202ABA98A200F4D189 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		1884CFD92ABA4A5400C5BB3B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1884CFDB2ABA4C6300C5BB3B /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		321665084E8A5BC6EA4662B5 /* Pods-cargo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cargo.debug.xcconfig"; path = "Target Support Files/Pods-cargo/Pods-cargo.debug.xcconfig"; sourceTree = "<group>"; };
 		687264387A3DB2AC6567D02F /* Pods-cargo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cargo.release.xcconfig"; path = "Target Support Files/Pods-cargo/Pods-cargo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,7 +158,15 @@
 		18344B452ABA3BC1006B8DB4 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				187A3F202ABA98A200F4D189 /* BaseNavigationController.swift */,
+				182A63092ABAA2B000DFE8F2 /* SplashViewController.swift */,
 				18344B492ABA3C04006B8DB4 /* LoginViewController.swift */,
+				1884CFDB2ABA4C6300C5BB3B /* SignupViewController.swift */,
+				182A62FF2ABA9E9F00DFE8F2 /* MainTabController.swift */,
+				182A63012ABA9FAA00DFE8F2 /* HomeViewController.swift */,
+				182A63032ABA9FB700DFE8F2 /* BidsViewController.swift */,
+				182A63052ABA9FC000DFE8F2 /* ChatsViewController.swift */,
+				182A63072ABA9FC700DFE8F2 /* ProfileViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -160,6 +188,8 @@
 		18344B482ABA3BD6006B8DB4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				1884CFD92ABA4A5400C5BB3B /* Extensions.swift */,
+				182A630B2ABAA3D500DFE8F2 /* Constants.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -219,7 +249,6 @@
 				321665084E8A5BC6EA4662B5 /* Pods-cargo.debug.xcconfig */,
 				687264387A3DB2AC6567D02F /* Pods-cargo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -282,7 +311,7 @@
 			mainGroup = 18344B122ABA341F006B8DB4;
 			packageReferences = (
 				18344B322ABA36FC006B8DB4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				18344B722ABA48A5006B8DB4 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */,
+				18344B722ABA48A5006B8DB4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 18344B1C2ABA341F006B8DB4 /* Products */;
 			projectDirPath = "";
@@ -373,8 +402,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				18344B4A2ABA3C04006B8DB4 /* LoginViewController.swift in Sources */,
+				182A63042ABA9FB700DFE8F2 /* BidsViewController.swift in Sources */,
+				182A63062ABA9FC000DFE8F2 /* ChatsViewController.swift in Sources */,
+				182A630A2ABAA2B000DFE8F2 /* SplashViewController.swift in Sources */,
 				18344B1F2ABA341F006B8DB4 /* AppDelegate.swift in Sources */,
+				182A63002ABA9E9F00DFE8F2 /* MainTabController.swift in Sources */,
+				182A63022ABA9FAA00DFE8F2 /* HomeViewController.swift in Sources */,
+				182A630C2ABAA3D500DFE8F2 /* Constants.swift in Sources */,
+				182A63082ABA9FC700DFE8F2 /* ProfileViewController.swift in Sources */,
+				187A3F212ABA98A200F4D189 /* BaseNavigationController.swift in Sources */,
+				1884CFDC2ABA4C6300C5BB3B /* SignupViewController.swift in Sources */,
 				18344B212ABA341F006B8DB4 /* SceneDelegate.swift in Sources */,
+				1884CFDA2ABA4A5400C5BB3B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,7 +649,7 @@
 				minimumVersion = 10.0.0;
 			};
 		};
-		18344B722ABA48A5006B8DB4 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */ = {
+		18344B722ABA48A5006B8DB4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -663,7 +702,7 @@
 		};
 		18344B732ABA48A5006B8DB4 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 18344B722ABA48A5006B8DB4 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
+			package = 18344B722ABA48A5006B8DB4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
