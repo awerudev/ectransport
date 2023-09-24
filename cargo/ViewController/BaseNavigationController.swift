@@ -17,6 +17,9 @@ class BaseNavigationController: UINavigationController {
         interactivePopGestureRecognizer?.delegate = self
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
 
     /*
     // MARK: - Navigation

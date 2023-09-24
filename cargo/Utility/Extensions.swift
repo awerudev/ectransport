@@ -23,5 +23,21 @@ extension UIView {
         }
     }
     
+    func setGradientBackground() {
+        let layer0 = CAGradientLayer()
+        layer0.colors = [
+            UIColor(red: 0.094, green: 0.282, blue: 0.369, alpha: 1).cgColor,
+            UIColor(red: 0.059, green: 0.141, blue: 0.224, alpha: 1).cgColor
+        ]
+        layer0.locations = [0, 1]
+        layer0.startPoint = CGPoint(x: 0.25, y: 0.5)
+        layer0.endPoint = CGPoint(x: 0.75, y: 0.5)
+//        layer0.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 0.77, c: -0.77, d: 0, tx: 0.89, ty: 0))
+        layer0.bounds = bounds.insetBy(dx: -0.5*bounds.size.width, dy: -0.5*bounds.size.height)
+        layer0.position = center
+        
+        layer.addSublayer(layer0)
+    }
+    
 }
 

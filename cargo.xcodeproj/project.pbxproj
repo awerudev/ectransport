@@ -48,9 +48,12 @@
 		18344B702ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */; };
 		18344B712ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */; };
 		18344B742ABA48A5006B8DB4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B732ABA48A5006B8DB4 /* IQKeyboardManagerSwift */; };
+		185346032ABBF57E004AE37A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185346022ABBF57E004AE37A /* GradientView.swift */; };
 		187A3F212ABA98A200F4D189 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A3F202ABA98A200F4D189 /* BaseNavigationController.swift */; };
 		1884CFDA2ABA4A5400C5BB3B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884CFD92ABA4A5400C5BB3B /* Extensions.swift */; };
 		1884CFDC2ABA4C6300C5BB3B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884CFDB2ABA4C6300C5BB3B /* SignupViewController.swift */; };
+		18AC9DE32ABFFD5E00B1B85E /* ChatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */; };
+		18E3729F2ABD4430009971C4 /* BidTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3729E2ABD4430009971C4 /* BidTableCell.swift */; };
 		6904CE00179344D8F32F923D /* Pods_cargo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2FEDAB29C285B3569D110A /* Pods_cargo.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,9 +93,12 @@
 		18344B5D2ABA3E0F006B8DB4 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		185346022ABBF57E004AE37A /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		187A3F202ABA98A200F4D189 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		1884CFD92ABA4A5400C5BB3B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1884CFDB2ABA4C6300C5BB3B /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableCell.swift; sourceTree = "<group>"; };
+		18E3729E2ABD4430009971C4 /* BidTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidTableCell.swift; sourceTree = "<group>"; };
 		321665084E8A5BC6EA4662B5 /* Pods-cargo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cargo.debug.xcconfig"; path = "Target Support Files/Pods-cargo/Pods-cargo.debug.xcconfig"; sourceTree = "<group>"; };
 		687264387A3DB2AC6567D02F /* Pods-cargo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cargo.release.xcconfig"; path = "Target Support Files/Pods-cargo/Pods-cargo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,6 +149,7 @@
 				18344B482ABA3BD6006B8DB4 /* Utility */,
 				18344B472ABA3BD2006B8DB4 /* Service */,
 				18344B462ABA3BCD006B8DB4 /* Model */,
+				185346012ABBF56F004AE37A /* View */,
 				18344B452ABA3BC1006B8DB4 /* ViewController */,
 				18344B1E2ABA341F006B8DB4 /* AppDelegate.swift */,
 				18344B202ABA341F006B8DB4 /* SceneDelegate.swift */,
@@ -164,9 +171,9 @@
 				1884CFDB2ABA4C6300C5BB3B /* SignupViewController.swift */,
 				182A62FF2ABA9E9F00DFE8F2 /* MainTabController.swift */,
 				182A63012ABA9FAA00DFE8F2 /* HomeViewController.swift */,
-				182A63032ABA9FB700DFE8F2 /* BidsViewController.swift */,
-				182A63052ABA9FC000DFE8F2 /* ChatsViewController.swift */,
-				182A63072ABA9FC700DFE8F2 /* ProfileViewController.swift */,
+				18E3729D2ABD43B0009971C4 /* BidsViewController */,
+				18AC9DE12ABFFCA000B1B85E /* ChatsViewController */,
+				18AC9DE42AC004A200B1B85E /* ProfileViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -233,6 +240,40 @@
 				18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */,
 			);
 			path = Montserrat;
+			sourceTree = "<group>";
+		};
+		185346012ABBF56F004AE37A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				185346022ABBF57E004AE37A /* GradientView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18AC9DE12ABFFCA000B1B85E /* ChatsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				182A63052ABA9FC000DFE8F2 /* ChatsViewController.swift */,
+				18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */,
+			);
+			path = ChatsViewController;
+			sourceTree = "<group>";
+		};
+		18AC9DE42AC004A200B1B85E /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				182A63072ABA9FC700DFE8F2 /* ProfileViewController.swift */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		18E3729D2ABD43B0009971C4 /* BidsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				182A63032ABA9FB700DFE8F2 /* BidsViewController.swift */,
+				18E3729E2ABD4430009971C4 /* BidTableCell.swift */,
+			);
+			path = BidsViewController;
 			sourceTree = "<group>";
 		};
 		386987982C054B563EEBD6FC /* Frameworks */ = {
@@ -404,10 +445,13 @@
 				18344B4A2ABA3C04006B8DB4 /* LoginViewController.swift in Sources */,
 				182A63042ABA9FB700DFE8F2 /* BidsViewController.swift in Sources */,
 				182A63062ABA9FC000DFE8F2 /* ChatsViewController.swift in Sources */,
+				185346032ABBF57E004AE37A /* GradientView.swift in Sources */,
 				182A630A2ABAA2B000DFE8F2 /* SplashViewController.swift in Sources */,
 				18344B1F2ABA341F006B8DB4 /* AppDelegate.swift in Sources */,
+				18AC9DE32ABFFD5E00B1B85E /* ChatTableCell.swift in Sources */,
 				182A63002ABA9E9F00DFE8F2 /* MainTabController.swift in Sources */,
 				182A63022ABA9FAA00DFE8F2 /* HomeViewController.swift in Sources */,
+				18E3729F2ABD4430009971C4 /* BidTableCell.swift in Sources */,
 				182A630C2ABAA3D500DFE8F2 /* Constants.swift in Sources */,
 				182A63082ABA9FC700DFE8F2 /* ProfileViewController.swift in Sources */,
 				187A3F212ABA98A200F4D189 /* BaseNavigationController.swift in Sources */,
@@ -572,6 +616,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -604,6 +649,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

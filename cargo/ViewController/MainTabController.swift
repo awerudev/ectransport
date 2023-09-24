@@ -13,6 +13,8 @@ class MainTabController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        tabBar.isTranslucent = false
     }
     
 

@@ -11,8 +11,12 @@ import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var window: UIWindow?
 
-
+    open class var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -20,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         IQKeyboardManager.shared.enable = true
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        if let splashView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplashViewController") as? SplashViewController {
+            window?.rootViewController = splashView
+        }
+        window?.makeKeyAndVisible()
         
         return true
     }

@@ -24,6 +24,10 @@ class SplashViewController: UIViewController {
         
         perform(#selector(presentNext), with: nil, afterDelay: 0.4)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
 
     /*
     // MARK: - Navigation
