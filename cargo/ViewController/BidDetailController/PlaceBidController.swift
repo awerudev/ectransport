@@ -55,6 +55,8 @@ class PlaceBidController: UIViewController {
     private func initLayout() {
         backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTapBackground(_:))))
         
+        contentViewHeight.constant = 0
+        
         // Gestures
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(moveOnContentView(_:)))
         panGesture.minimumNumberOfTouches = 1
@@ -121,6 +123,12 @@ class PlaceBidController: UIViewController {
     
     // MARK: - Action
     
+    @IBAction func onClickCancel(_ sender: Any) {
+        hideContentViewWithCompletion { (finish) in
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @objc
     private func onTapBackground(_ sender: Any) {
         hideContentViewWithCompletion { (finish) in
@@ -179,4 +187,5 @@ class PlaceBidController: UIViewController {
         }
     }
 
+    
 }
