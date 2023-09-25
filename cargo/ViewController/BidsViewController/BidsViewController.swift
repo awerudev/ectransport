@@ -53,12 +53,25 @@ class BidsViewController: UIViewController {
     
     // MARK: - My Method
     
-    private func initLayout() {
+    private func initLayout() {        
+        
+        // Address View
         addressInputView.setBorder(UIColor(red: 0.225, green: 0.751, blue: 0.992, alpha: 0.2))
         
         // TableView
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    // MARK: - Action
+    
+    @objc
+    private func onClickSeeDetails(_ sender: UIButton) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "BidDetailController") as? BidDetailController else {
+            return
+        }
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }
@@ -86,6 +99,8 @@ extension BidsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BidTableCell", for: indexPath) as! BidTableCell
         
+        cell.detailButton.tag = indexPath.row
+        cell.detailButton.addTarget(self, action: #selector(onClickSeeDetails(_:)), for: .touchUpInside)
         
         return cell
     }

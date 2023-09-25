@@ -10,6 +10,13 @@ import UIKit
 class Constants: NSObject {
     
     // MARK: - UI Layout
+    class var screenHei: CGFloat {
+        return UIScreen.main.bounds.size.width < UIScreen.main.bounds.size.height ? UIScreen.main.bounds.size.height: UIScreen.main.bounds.size.width
+    }
+    
+    class var screenWid: CGFloat {
+        return UIScreen.main.bounds.size.width > UIScreen.main.bounds.size.height ? UIScreen.main.bounds.size.height: UIScreen.main.bounds.size.width
+    }
     /// 8
     static let cornerRadius0: CGFloat = 8
     /// 16
@@ -22,5 +29,6 @@ class Constants: NSObject {
     // MARK: - Notification Center
     
     static let notifyPresentDashboard = "present_dashboard"
+    static let notifyPresentLogin = "present_login"
 
 }

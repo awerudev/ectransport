@@ -1,20 +1,23 @@
 //
-//  ProfileViewController.swift
+//  BidDetailController.swift
 //  cargo
 //
-//  Created by Apple on 9/19/23.
+//  Created by Apple on 9/24/23.
 //
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-    
-    @IBOutlet weak var addressInputView: UIView!
-    @IBOutlet weak var logoutButton: UIButton!
+class BidDetailController: UIViewController {
+
+    @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var cancelBidButton: UIButton!
+    @IBOutlet weak var placeBidButton: UIButton!
+    
     
     // MARK: - Method
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,11 +29,7 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     /*
@@ -44,35 +43,51 @@ class ProfileViewController: UIViewController {
     */
     
     // MARK: - My Method
-    
+
     private func initLayout() {
-        addressInputView.setBorder(UIColor(red: 0.225, green: 0.751, blue: 0.992, alpha: 0.2))
+        // Navigation Bar
+        navigationItem.title = "Bid offer details"
+        
+        // Address View
+        addressView.setBorder(UIColor(named: "BlueTrans20")!, width: 1, cornerRadius: Constants.cornerRadius0)
         
         // TableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        // Logout Button
-        logoutButton.setBorder(UIColor(named: "ButtonBorderRed")!)
+        // Bottom View
+        bottomView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.08).cgColor
+        bottomView.layer.shadowOpacity = 1
+        bottomView.layer.shadowRadius = Constants.cornerRadius1
+        bottomView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
+        cancelBidButton.setBorder(UIColor(red: 0.837, green: 0.865, blue: 0.883, alpha: 1))
+        placeBidButton.setBorder(UIColor(named: "TextGray")!)
     }
     
     // MARK: - Action
-
-    @IBAction func onClickLogout(_ sender: Any) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyPresentLogin), object: nil)
+    
+    @IBAction func onClickPlaceBid(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "PlaceBidController") as? PlaceBidController else {
+            return
+        }
+        
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true)
     }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+extension BidDetailController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -84,14 +99,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileLoadCell", for: indexPath) as! ProfileLoadCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BidMoreInfoCell", for: indexPath) as! BidMoreInfoCell
         
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

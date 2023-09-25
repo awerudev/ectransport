@@ -53,6 +53,10 @@
 		1884CFDA2ABA4A5400C5BB3B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884CFD92ABA4A5400C5BB3B /* Extensions.swift */; };
 		1884CFDC2ABA4C6300C5BB3B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884CFDB2ABA4C6300C5BB3B /* SignupViewController.swift */; };
 		18AC9DE32ABFFD5E00B1B85E /* ChatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */; };
+		18DA780E2AC127A000719118 /* ProfileLoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA780D2AC127A000719118 /* ProfileLoadCell.swift */; };
+		18DA78112AC12A0C00719118 /* BidDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA78102AC12A0C00719118 /* BidDetailController.swift */; };
+		18DA78132AC1304500719118 /* BidMoreInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA78122AC1304500719118 /* BidMoreInfoCell.swift */; };
+		18DA78152AC13BF500719118 /* PlaceBidController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA78142AC13BF500719118 /* PlaceBidController.swift */; };
 		18E3729F2ABD4430009971C4 /* BidTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E3729E2ABD4430009971C4 /* BidTableCell.swift */; };
 		6904CE00179344D8F32F923D /* Pods_cargo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F2FEDAB29C285B3569D110A /* Pods_cargo.framework */; };
 /* End PBXBuildFile section */
@@ -98,6 +102,10 @@
 		1884CFD92ABA4A5400C5BB3B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1884CFDB2ABA4C6300C5BB3B /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableCell.swift; sourceTree = "<group>"; };
+		18DA780D2AC127A000719118 /* ProfileLoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLoadCell.swift; sourceTree = "<group>"; };
+		18DA78102AC12A0C00719118 /* BidDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidDetailController.swift; sourceTree = "<group>"; };
+		18DA78122AC1304500719118 /* BidMoreInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidMoreInfoCell.swift; sourceTree = "<group>"; };
+		18DA78142AC13BF500719118 /* PlaceBidController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceBidController.swift; sourceTree = "<group>"; };
 		18E3729E2ABD4430009971C4 /* BidTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidTableCell.swift; sourceTree = "<group>"; };
 		321665084E8A5BC6EA4662B5 /* Pods-cargo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cargo.debug.xcconfig"; path = "Target Support Files/Pods-cargo/Pods-cargo.debug.xcconfig"; sourceTree = "<group>"; };
 		687264387A3DB2AC6567D02F /* Pods-cargo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cargo.release.xcconfig"; path = "Target Support Files/Pods-cargo/Pods-cargo.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +182,7 @@
 				18E3729D2ABD43B0009971C4 /* BidsViewController */,
 				18AC9DE12ABFFCA000B1B85E /* ChatsViewController */,
 				18AC9DE42AC004A200B1B85E /* ProfileViewController */,
+				18DA780F2AC129EF00719118 /* BidDetailController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -263,8 +272,19 @@
 			isa = PBXGroup;
 			children = (
 				182A63072ABA9FC700DFE8F2 /* ProfileViewController.swift */,
+				18DA780D2AC127A000719118 /* ProfileLoadCell.swift */,
 			);
 			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		18DA780F2AC129EF00719118 /* BidDetailController */ = {
+			isa = PBXGroup;
+			children = (
+				18DA78102AC12A0C00719118 /* BidDetailController.swift */,
+				18DA78122AC1304500719118 /* BidMoreInfoCell.swift */,
+				18DA78142AC13BF500719118 /* PlaceBidController.swift */,
+			);
+			path = BidDetailController;
 			sourceTree = "<group>";
 		};
 		18E3729D2ABD43B0009971C4 /* BidsViewController */ = {
@@ -442,18 +462,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DA78132AC1304500719118 /* BidMoreInfoCell.swift in Sources */,
 				18344B4A2ABA3C04006B8DB4 /* LoginViewController.swift in Sources */,
 				182A63042ABA9FB700DFE8F2 /* BidsViewController.swift in Sources */,
 				182A63062ABA9FC000DFE8F2 /* ChatsViewController.swift in Sources */,
+				18DA780E2AC127A000719118 /* ProfileLoadCell.swift in Sources */,
 				185346032ABBF57E004AE37A /* GradientView.swift in Sources */,
 				182A630A2ABAA2B000DFE8F2 /* SplashViewController.swift in Sources */,
 				18344B1F2ABA341F006B8DB4 /* AppDelegate.swift in Sources */,
 				18AC9DE32ABFFD5E00B1B85E /* ChatTableCell.swift in Sources */,
+				18DA78112AC12A0C00719118 /* BidDetailController.swift in Sources */,
 				182A63002ABA9E9F00DFE8F2 /* MainTabController.swift in Sources */,
 				182A63022ABA9FAA00DFE8F2 /* HomeViewController.swift in Sources */,
 				18E3729F2ABD4430009971C4 /* BidTableCell.swift in Sources */,
 				182A630C2ABAA3D500DFE8F2 /* Constants.swift in Sources */,
 				182A63082ABA9FC700DFE8F2 /* ProfileViewController.swift in Sources */,
+				18DA78152AC13BF500719118 /* PlaceBidController.swift in Sources */,
 				187A3F212ABA98A200F4D189 /* BaseNavigationController.swift in Sources */,
 				1884CFDC2ABA4C6300C5BB3B /* SignupViewController.swift in Sources */,
 				18344B212ABA341F006B8DB4 /* SceneDelegate.swift in Sources */,

@@ -46,9 +46,6 @@ class ChatsViewController: UIViewController {
     
     private func initLayout() {
         // Navigation Bar
-        if let navigationController = navigationController {
-//            navigationController.navigationBar.barTintColor
-        }
         navigationItem.title = "Chats"
         
         // Table View

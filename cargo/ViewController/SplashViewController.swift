@@ -17,6 +17,10 @@ class SplashViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.notifyPresentDashboard), object: nil, queue: OperationQueue.main) { notification in
             self.presentMainTab()
         }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.notifyPresentLogin), object: nil, queue: OperationQueue.main) { notification in
+            self.presentLogin()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,13 +51,20 @@ class SplashViewController: UIViewController {
     }
     
     private func presentLogin() {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
-            return
+        if let presented = self.presentedViewController {
+            presented.dismiss(animated: true) {
+                self.presentLogin()
+            }
         }
-        let nav = BaseNavigationController(rootViewController: vc)
-        nav.modalTransitionStyle = .crossDissolve
-        nav.modalPresentationStyle = .overCurrentContext
-        present(nav, animated: true, completion: nil)
+        else {
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {
+                return
+            }
+            let nav = BaseNavigationController(rootViewController: vc)
+            nav.modalTransitionStyle = .crossDissolve
+            nav.modalPresentationStyle = .overCurrentContext
+            present(nav, animated: true, completion: nil)
+        }
     }
     
     private func presentMainTab() {
