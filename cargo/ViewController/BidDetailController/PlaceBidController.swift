@@ -71,7 +71,7 @@ class PlaceBidController: UIViewController {
         totalPriceText.keyboardType = .numberPad
         priceMileText.keyboardType = .numberPad
         
-        cancelButton.setBorder(UIColor(red: 0.837, green: 0.865, blue: 0.883, alpha: 1))
+        cancelButton.setBorder(UIColor(named: "ViewBorderThick")!)
         placeButton.setBorder(UIColor(named: "TextGray")!)
     }
     

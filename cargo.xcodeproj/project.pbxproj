@@ -48,12 +48,19 @@
 		18344B702ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */; };
 		18344B712ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */; };
 		18344B742ABA48A5006B8DB4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B732ABA48A5006B8DB4 /* IQKeyboardManagerSwift */; };
+		184EA4D72AC2EB6C0054E9C0 /* LoadInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EA4D62AC2EB6C0054E9C0 /* LoadInfoController.swift */; };
 		185346032ABBF57E004AE37A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185346022ABBF57E004AE37A /* GradientView.swift */; };
 		187724032AC1CDE100E7905B /* HomeAddressTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187724022AC1CDE100E7905B /* HomeAddressTableCell.swift */; };
 		187724052AC1CE5F00E7905B /* HomeNoLoadTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187724042AC1CE5F00E7905B /* HomeNoLoadTableCell.swift */; };
+		1877F1622AC36B870029ACE8 /* ArriveConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1877F1612AC36B870029ACE8 /* ArriveConfirmController.swift */; };
+		1877F1642AC38D2D0029ACE8 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1877F1632AC38D2D0029ACE8 /* Alert.swift */; };
+		1877F1662AC38E1E0029ACE8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1877F1652AC38E1E0029ACE8 /* User.swift */; };
+		1877F1682AC3921A0029ACE8 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1877F1672AC3921A0029ACE8 /* FirebaseService.swift */; };
 		187A3F212ABA98A200F4D189 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A3F202ABA98A200F4D189 /* BaseNavigationController.swift */; };
 		1884CFDA2ABA4A5400C5BB3B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884CFD92ABA4A5400C5BB3B /* Extensions.swift */; };
 		1884CFDC2ABA4C6300C5BB3B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884CFDB2ABA4C6300C5BB3B /* SignupViewController.swift */; };
+		189C1F1A2AC28C8400BDF248 /* HomeLoadTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C1F192AC28C8300BDF248 /* HomeLoadTableCell.swift */; };
+		189C1F1C2AC290F500BDF248 /* HomeTransitTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C1F1B2AC290F500BDF248 /* HomeTransitTableCell.swift */; };
 		18AC9DE32ABFFD5E00B1B85E /* ChatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */; };
 		18DA780E2AC127A000719118 /* ProfileLoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA780D2AC127A000719118 /* ProfileLoadCell.swift */; };
 		18DA78112AC12A0C00719118 /* BidDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA78102AC12A0C00719118 /* BidDetailController.swift */; };
@@ -99,12 +106,20 @@
 		18344B5D2ABA3E0F006B8DB4 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		184EA4D62AC2EB6C0054E9C0 /* LoadInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadInfoController.swift; sourceTree = "<group>"; };
+		184EA4D82AC2EDF20054E9C0 /* cargo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cargo.entitlements; sourceTree = "<group>"; };
 		185346022ABBF57E004AE37A /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		187724022AC1CDE100E7905B /* HomeAddressTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddressTableCell.swift; sourceTree = "<group>"; };
 		187724042AC1CE5F00E7905B /* HomeNoLoadTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoLoadTableCell.swift; sourceTree = "<group>"; };
+		1877F1612AC36B870029ACE8 /* ArriveConfirmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArriveConfirmController.swift; sourceTree = "<group>"; };
+		1877F1632AC38D2D0029ACE8 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		1877F1652AC38E1E0029ACE8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1877F1672AC3921A0029ACE8 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		187A3F202ABA98A200F4D189 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		1884CFD92ABA4A5400C5BB3B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1884CFDB2ABA4C6300C5BB3B /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		189C1F192AC28C8300BDF248 /* HomeLoadTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoadTableCell.swift; sourceTree = "<group>"; };
+		189C1F1B2AC290F500BDF248 /* HomeTransitTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTransitTableCell.swift; sourceTree = "<group>"; };
 		18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableCell.swift; sourceTree = "<group>"; };
 		18DA780D2AC127A000719118 /* ProfileLoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLoadCell.swift; sourceTree = "<group>"; };
 		18DA78102AC12A0C00719118 /* BidDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidDetailController.swift; sourceTree = "<group>"; };
@@ -157,6 +172,7 @@
 		18344B1D2ABA341F006B8DB4 /* cargo */ = {
 			isa = PBXGroup;
 			children = (
+				184EA4D82AC2EDF20054E9C0 /* cargo.entitlements */,
 				18344B4B2ABA3E0F006B8DB4 /* Resource */,
 				18344B482ABA3BD6006B8DB4 /* Utility */,
 				18344B472ABA3BD2006B8DB4 /* Service */,
@@ -187,6 +203,8 @@
 				18AC9DE12ABFFCA000B1B85E /* ChatsViewController */,
 				18AC9DE42AC004A200B1B85E /* ProfileViewController */,
 				18DA780F2AC129EF00719118 /* BidDetailController */,
+				184EA4D52AC2EB520054E9C0 /* LoadInfoController */,
+				1877F1612AC36B870029ACE8 /* ArriveConfirmController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -194,6 +212,7 @@
 		18344B462ABA3BCD006B8DB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1877F1652AC38E1E0029ACE8 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +220,7 @@
 		18344B472ABA3BD2006B8DB4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				1877F1672AC3921A0029ACE8 /* FirebaseService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -208,7 +228,6 @@
 		18344B482ABA3BD6006B8DB4 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				1884CFD92ABA4A5400C5BB3B /* Extensions.swift */,
 				182A630B2ABAA3D500DFE8F2 /* Constants.swift */,
 			);
 			path = Utility;
@@ -255,10 +274,20 @@
 			path = Montserrat;
 			sourceTree = "<group>";
 		};
+		184EA4D52AC2EB520054E9C0 /* LoadInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				184EA4D62AC2EB6C0054E9C0 /* LoadInfoController.swift */,
+			);
+			path = LoadInfoController;
+			sourceTree = "<group>";
+		};
 		185346012ABBF56F004AE37A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1884CFD92ABA4A5400C5BB3B /* Extensions.swift */,
 				185346022ABBF57E004AE37A /* GradientView.swift */,
+				1877F1632AC38D2D0029ACE8 /* Alert.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -269,6 +298,8 @@
 				182A63012ABA9FAA00DFE8F2 /* HomeViewController.swift */,
 				187724022AC1CDE100E7905B /* HomeAddressTableCell.swift */,
 				187724042AC1CE5F00E7905B /* HomeNoLoadTableCell.swift */,
+				189C1F192AC28C8300BDF248 /* HomeLoadTableCell.swift */,
+				189C1F1B2AC290F500BDF248 /* HomeTransitTableCell.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -485,17 +516,24 @@
 				182A630A2ABAA2B000DFE8F2 /* SplashViewController.swift in Sources */,
 				18344B1F2ABA341F006B8DB4 /* AppDelegate.swift in Sources */,
 				18AC9DE32ABFFD5E00B1B85E /* ChatTableCell.swift in Sources */,
+				1877F1642AC38D2D0029ACE8 /* Alert.swift in Sources */,
+				184EA4D72AC2EB6C0054E9C0 /* LoadInfoController.swift in Sources */,
+				189C1F1A2AC28C8400BDF248 /* HomeLoadTableCell.swift in Sources */,
 				18DA78112AC12A0C00719118 /* BidDetailController.swift in Sources */,
 				182A63002ABA9E9F00DFE8F2 /* MainTabController.swift in Sources */,
+				1877F1682AC3921A0029ACE8 /* FirebaseService.swift in Sources */,
 				182A63022ABA9FAA00DFE8F2 /* HomeViewController.swift in Sources */,
 				18E3729F2ABD4430009971C4 /* BidTableCell.swift in Sources */,
 				182A630C2ABAA3D500DFE8F2 /* Constants.swift in Sources */,
 				187724052AC1CE5F00E7905B /* HomeNoLoadTableCell.swift in Sources */,
 				187724032AC1CDE100E7905B /* HomeAddressTableCell.swift in Sources */,
 				182A63082ABA9FC700DFE8F2 /* ProfileViewController.swift in Sources */,
+				1877F1662AC38E1E0029ACE8 /* User.swift in Sources */,
 				18DA78152AC13BF500719118 /* PlaceBidController.swift in Sources */,
+				189C1F1C2AC290F500BDF248 /* HomeTransitTableCell.swift in Sources */,
 				187A3F212ABA98A200F4D189 /* BaseNavigationController.swift in Sources */,
 				1884CFDC2ABA4C6300C5BB3B /* SignupViewController.swift in Sources */,
+				1877F1622AC36B870029ACE8 /* ArriveConfirmController.swift in Sources */,
 				18344B212ABA341F006B8DB4 /* SceneDelegate.swift in Sources */,
 				1884CFDA2ABA4A5400C5BB3B /* Extensions.swift in Sources */,
 			);
@@ -643,6 +681,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = cargo/cargo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = H56XXGRY7F;
@@ -676,6 +715,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = cargo/cargo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = H56XXGRY7F;

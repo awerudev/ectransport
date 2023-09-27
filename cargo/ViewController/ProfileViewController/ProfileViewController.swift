@@ -6,12 +6,18 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var addressInputView: UIView!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var loadsLabel: UILabel!
     
     // MARK: - Method
 
@@ -54,12 +60,32 @@ class ProfileViewController: UIViewController {
         
         // Logout Button
         logoutButton.setBorder(UIColor(named: "ButtonBorderRed")!)
+        
+        userImage.setBorder(UIColor(named: "White")!, cornerRadius: Constants.cornerRadius1)
+        
+        let user = User.user()
+        nameLabel.text = user.name
+        emailLabel.text = user.email
+        phoneLabel.text = user.phone
+        loadsLabel.text = "0 Loads"
+        
+        if !user.photo.isEmpty {
+            userImage.sd_setImage(with: URL(string: user.photo), placeholderImage: UIImage.defaultUserPhoto(), options: .continueInBackground) { image, error, cacheType, url in
+                
+            }
+        }
     }
     
     // MARK: - Action
 
     @IBAction func onClickLogout(_ sender: Any) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyPresentLogin), object: nil)
+        Alert.showAlert(Constants.appName, message: "Are you sure that you want to log out?", from: self) { yesAction in
+            FirebaseService.logout()
+            
+            NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyPresentLogin), object: nil)
+        } negativeHandler: { noAction in
+            
+        }
     }
 }
 

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import AFViewShaker
+import MBProgressHUD
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -59,10 +62,49 @@ class LoginViewController: UIViewController {
         loginButton.clipsToBounds = true
     }
     
+    private func validate() -> Bool {
+        var arrViews = [UIView]()
+        if let value = emailText.text {
+            if value.isEmpty || !value.isValidEmail() {
+                arrViews.append(emailView)
+            }
+        }
+        if let value = passwordText.text, value.isEmpty {
+            arrViews.append(passwordText)
+        }
+        
+        if arrViews.count > 0 {
+            if let shaker = AFViewShaker(viewsArray: arrViews) {
+                shaker.shake()
+            }
+            return false
+        }
+        
+        return true
+    }
+    
     // MARK: - Action
     
     @IBAction func onClickLogin(_ sender: UIButton) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyPresentDashboard), object: nil)
+        guard validate() else {
+            return
+        }
+        
+        let email = emailText.text ?? ""
+        let password = passwordText.text ?? ""
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        FirebaseService.loginWith(email: email, password: password) { error in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            if let error = error {
+                Alert.showAlert("Error", message: error.localizedDescription, from: self, handler: nil)
+                return
+            }
+            
+            FirebaseService.getUserInfo()
+            NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyPresentDashboard), object: nil)
+        }
     }
     
     @IBAction func onClickSignup(_ sender: Any) {

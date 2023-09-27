@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SplashViewController: UIViewController {
 
@@ -47,7 +48,14 @@ class SplashViewController: UIViewController {
     
     @objc
     private func presentNext() {
-        presentLogin()
+        if FirebaseService.isLoggedIn {
+            FirebaseService.getUserInfo()
+            
+            presentMainTab()
+        }
+        else {
+            presentLogin()
+        }
     }
     
     private func presentLogin() {

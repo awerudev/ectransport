@@ -19,12 +19,7 @@ class BidTableCell: UITableViewCell {
         // Initialization code
         
         // Shadow Effect
-        containerView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.08).cgColor
-        containerView.layer.shadowOpacity = 1
-        containerView.layer.shadowRadius = Constants.cornerRadius1
-        containerView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        containerView.layer.cornerRadius = Constants.cornerRadius1
-        containerView.backgroundColor = UIColor(named: "White")
+        containerView.setShadow()
         
         addressView.setBorder(UIColor(named: "ViewBorder")!, width: 1, cornerRadius: Constants.cornerRadius0)
         

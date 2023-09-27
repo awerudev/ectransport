@@ -23,6 +23,18 @@ extension UIView {
         }
     }
     
+    func setShadow(
+        shadowColor: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.08),
+        background: UIColor = UIColor(named: "White")!
+    ) {
+        layer.shadowColor = shadowColor.cgColor
+        layer.shadowOpacity = 1
+        layer.shadowRadius = Constants.cornerRadius1
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.cornerRadius = Constants.cornerRadius1
+        backgroundColor = background
+    }
+    
     func setGradientBackground() {
         let layer0 = CAGradientLayer()
         layer0.colors = [
@@ -39,5 +51,27 @@ extension UIView {
         layer.addSublayer(layer0)
     }
     
+    
+    
 }
 
+extension String {
+    
+    func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let result = emailTest.evaluate(with: self)
+        
+        return result
+
+    }
+    
+}
+
+extension UIImage {
+    
+    public class func defaultUserPhoto() -> UIImage {
+        return UIImage(named: "PhotoPlaceholder")!
+    }
+    
+}

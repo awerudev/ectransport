@@ -8,6 +8,8 @@ target 'cargo' do
   # Pods for cargo
 
   pod 'AFViewShaker'
+  pod 'MBProgressHUD'
+  pod 'SDWebImage'
 
 end
 

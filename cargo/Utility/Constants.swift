@@ -9,6 +9,8 @@ import UIKit
 
 class Constants: NSObject {
     
+    static let appName = "ECT CARGO"
+    
     // MARK: - UI Layout
     class var screenHei: CGFloat {
         return UIScreen.main.bounds.size.width < UIScreen.main.bounds.size.height ? UIScreen.main.bounds.size.height: UIScreen.main.bounds.size.width
@@ -25,6 +27,10 @@ class Constants: NSObject {
     static var safeAreaInsets: UIEdgeInsets {
         return AppDelegate.shared.window?.safeAreaInsets ?? UIEdgeInsets.zero
     }
+    
+    // MARK: - Standard UserDefault
+    
+    static let prefCurrentUser = "current_user"
     
     // MARK: - Notification Center
     

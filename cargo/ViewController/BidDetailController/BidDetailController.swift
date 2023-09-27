@@ -61,7 +61,7 @@ class BidDetailController: UIViewController {
         bottomView.layer.shadowRadius = Constants.cornerRadius1
         bottomView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
-        cancelBidButton.setBorder(UIColor(red: 0.837, green: 0.865, blue: 0.883, alpha: 1))
+        cancelBidButton.setBorder(UIColor(named: "ViewBorderThick")!)
         placeBidButton.setBorder(UIColor(named: "TextGray")!)
     }
     
