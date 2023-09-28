@@ -26,6 +26,10 @@ class HomeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.notifyProfileUpdated), object: nil, queue: OperationQueue.main) { notification in
+            self.showUserInfo()
+        }
+        
         initLayout()
     }
     
@@ -67,6 +71,10 @@ class HomeViewController: UIViewController {
         
         userImage.setBorder(UIColor(named: "White")!)
         
+        showUserInfo()
+    }
+    
+    private func showUserInfo() {
         let user = User.user()
         nameLabel.text = user.name
         if !user.photo.isEmpty {

@@ -11,6 +11,7 @@ class BidsViewController: UIViewController {
 
     @IBOutlet weak var topView: GradientView!    
     @IBOutlet weak var addressInputView: UIView!
+    @IBOutlet weak var addressText: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
@@ -57,6 +58,8 @@ class BidsViewController: UIViewController {
         
         // Address View
         addressInputView.setBorder(UIColor(red: 0.225, green: 0.751, blue: 0.992, alpha: 0.2))
+        
+        addressText.setPlaceholder("Enter Address")
         
         // TableView
         tableView.delegate = self

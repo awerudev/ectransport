@@ -62,6 +62,7 @@
 		189C1F1A2AC28C8400BDF248 /* HomeLoadTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C1F192AC28C8300BDF248 /* HomeLoadTableCell.swift */; };
 		189C1F1C2AC290F500BDF248 /* HomeTransitTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C1F1B2AC290F500BDF248 /* HomeTransitTableCell.swift */; };
 		18AC9DE32ABFFD5E00B1B85E /* ChatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */; };
+		18AFB2902AC3E128003D6D5D /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFB28F2AC3E128003D6D5D /* EditProfileController.swift */; };
 		18DA780E2AC127A000719118 /* ProfileLoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA780D2AC127A000719118 /* ProfileLoadCell.swift */; };
 		18DA78112AC12A0C00719118 /* BidDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA78102AC12A0C00719118 /* BidDetailController.swift */; };
 		18DA78132AC1304500719118 /* BidMoreInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA78122AC1304500719118 /* BidMoreInfoCell.swift */; };
@@ -121,6 +122,7 @@
 		189C1F192AC28C8300BDF248 /* HomeLoadTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoadTableCell.swift; sourceTree = "<group>"; };
 		189C1F1B2AC290F500BDF248 /* HomeTransitTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTransitTableCell.swift; sourceTree = "<group>"; };
 		18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableCell.swift; sourceTree = "<group>"; };
+		18AFB28F2AC3E128003D6D5D /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
 		18DA780D2AC127A000719118 /* ProfileLoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLoadCell.swift; sourceTree = "<group>"; };
 		18DA78102AC12A0C00719118 /* BidDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidDetailController.swift; sourceTree = "<group>"; };
 		18DA78122AC1304500719118 /* BidMoreInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidMoreInfoCell.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				18E3729D2ABD43B0009971C4 /* BidsViewController */,
 				18AC9DE12ABFFCA000B1B85E /* ChatsViewController */,
 				18AC9DE42AC004A200B1B85E /* ProfileViewController */,
+				18AFB28E2AC3E10E003D6D5D /* EditProfileController */,
 				18DA780F2AC129EF00719118 /* BidDetailController */,
 				184EA4D52AC2EB520054E9C0 /* LoadInfoController */,
 				1877F1612AC36B870029ACE8 /* ArriveConfirmController.swift */,
@@ -322,6 +325,14 @@
 			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
+		18AFB28E2AC3E10E003D6D5D /* EditProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				18AFB28F2AC3E128003D6D5D /* EditProfileController.swift */,
+			);
+			path = EditProfileController;
+			sourceTree = "<group>";
+		};
 		18DA780F2AC129EF00719118 /* BidDetailController */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +381,7 @@
 				18344B182ABA341F006B8DB4 /* Frameworks */,
 				18344B192ABA341F006B8DB4 /* Resources */,
 				0337BC7CE54F406FB88140C4 /* [CP] Embed Pods Frameworks */,
+				F2923B0CE4672A1C1BB3905D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -500,6 +512,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F2923B0CE4672A1C1BB3905D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cargo/Pods-cargo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cargo/Pods-cargo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cargo/Pods-cargo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -518,6 +547,7 @@
 				18AC9DE32ABFFD5E00B1B85E /* ChatTableCell.swift in Sources */,
 				1877F1642AC38D2D0029ACE8 /* Alert.swift in Sources */,
 				184EA4D72AC2EB6C0054E9C0 /* LoadInfoController.swift in Sources */,
+				18AFB2902AC3E128003D6D5D /* EditProfileController.swift in Sources */,
 				189C1F1A2AC28C8400BDF248 /* HomeLoadTableCell.swift in Sources */,
 				18DA78112AC12A0C00719118 /* BidDetailController.swift in Sources */,
 				182A63002ABA9E9F00DFE8F2 /* MainTabController.swift in Sources */,
@@ -683,7 +713,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = cargo/cargo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H56XXGRY7F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cargo/Info.plist;
@@ -717,7 +747,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = cargo/cargo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H56XXGRY7F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cargo/Info.plist;

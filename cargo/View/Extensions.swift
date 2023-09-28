@@ -75,3 +75,14 @@ extension UIImage {
     }
     
 }
+
+extension UITextField {
+    
+    func setPlaceholder(_ placeholder: String, color: UIColor = UIColor(named: "TextLightGray")!) {
+        attributedPlaceholder = NSAttributedString(
+            string: placeholder,
+            attributes: [NSAttributedString.Key.foregroundColor: color]
+        )
+    }
+    
+}

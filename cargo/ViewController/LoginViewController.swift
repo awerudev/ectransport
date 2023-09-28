@@ -101,9 +101,13 @@ class LoginViewController: UIViewController {
                 Alert.showAlert("Error", message: error.localizedDescription, from: self, handler: nil)
                 return
             }
-            
-            FirebaseService.getUserInfo()
-            NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyPresentDashboard), object: nil)
+        
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            FirebaseService.getUserInfo { user in
+                MBProgressHUD.hide(for: self.view, animated: true)
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyPresentDashboard), object: nil)
+            }
         }
     }
     

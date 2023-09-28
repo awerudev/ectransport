@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 enum ProfileStatus: Int {
     case pending = 0
@@ -55,6 +56,9 @@ struct User: Codable {
     var status = 0
     var vehicle: VehicleDimension = VehicleDimension()
     var photo = ""
+    var address = ""
+    var latitude: CLLocationDegrees = 0
+    var longitude: CLLocationDegrees = 0
     
     init() {
         
@@ -82,6 +86,15 @@ struct User: Codable {
         if let value = dic["photo"] as? String {
             photo = value
         }
+        if let value = dic["address"] as? String {
+            address = value
+        }
+        if let value = dic["latitude"] as? CLLocationDegrees {
+            latitude = value
+        }
+        if let value = dic["longitude"] as? CLLocationDegrees {
+            longitude = value
+        }
     }
     
     func statusValue() -> ProfileStatus {
@@ -90,21 +103,28 @@ struct User: Codable {
     
     func jsonObj() -> [String: Any] {
         return [
-            "id": id,
-            "name": name,
-            "email": email,
-            "phone": phone,
-            "status": status,
-            "vehicle": vehicle.jsonObj(),
-            "photo": photo
+            "id"       : id,
+            "name"     : name,
+            "email"    : email,
+            "phone"    : phone,
+            "status"   : status,
+            "vehicle"  : vehicle.jsonObj(),
+            "photo"    : photo,
+            "address"  : address,
+            "latitude" : latitude,
+            "longitude": longitude
         ]
     }
     
-    func save() {
+    func save(sync: Bool = false) {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(self)
             UserDefaults.standard.set(data, forKey: Constants.prefCurrentUser)
+            
+            if sync {
+                FirebaseService.saveUserInfo(user: self, completion: nil)
+            }
         }
         catch {
             print(error.localizedDescription)
@@ -123,6 +143,10 @@ struct User: Codable {
             }
         }
         return User()
+    }
+    
+    static func clear() {
+        UserDefaults.standard.removeObject(forKey: Constants.prefCurrentUser)
     }
     
 }

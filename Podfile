@@ -10,6 +10,8 @@ target 'cargo' do
   pod 'AFViewShaker'
   pod 'MBProgressHUD'
   pod 'SDWebImage'
+  
+  pod 'GooglePlaces'
 
 end
 

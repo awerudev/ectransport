@@ -816,6 +816,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addressInputView" destination="PLd-8O-JTf" id="0QN-IV-z5B"/>
+                        <outlet property="addressText" destination="08C-YY-Daz" id="EYh-bh-s1r"/>
                         <outlet property="tableView" destination="rLe-Uo-oit" id="msA-Qe-an2"/>
                         <outlet property="topView" destination="O39-uO-RpN" id="kfj-SN-vbO"/>
                         <outlet property="topViewHeight" destination="1fY-0x-eOd" id="4gd-BW-TyW"/>
@@ -1611,15 +1612,6 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" name="White"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-HY-cAy">
-                                                <rect key="frame" x="320" y="0.0" width="38" height="44"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" name="White"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" image="PenWhite">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="heavy"/>
-                                                </state>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.22352941179999999" green="0.74901960779999999" blue="0.99215686270000003" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -1689,6 +1681,18 @@
                                             <constraint firstItem="rgh-ku-kjl" firstAttribute="leading" secondItem="9Xm-2F-aaj" secondAttribute="leading" id="bhT-FW-udX"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-HY-cAy" userLabel="Edit">
+                                        <rect key="frame" x="339" y="8" width="35" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" name="White"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="PenWhite">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="heavy"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onClickEditProfile:" destination="JcR-bD-cQN" eventType="touchUpInside" id="bCc-JO-HLY"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1953,6 +1957,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="addressInputView" destination="05M-EJ-Wdu" id="TJh-x2-CQ1"/>
+                        <outlet property="addressText" destination="v3u-L1-px3" id="mFV-rd-YZO"/>
+                        <outlet property="editProfileButton" destination="pvc-HY-cAy" id="2qd-co-AaK"/>
                         <outlet property="emailLabel" destination="MXv-ZA-6Bx" id="tL1-eN-PkV"/>
                         <outlet property="loadsLabel" destination="hPr-vg-bPw" id="1Dx-ry-xaf"/>
                         <outlet property="logoutButton" destination="8Fa-PQ-cvk" id="ZaB-Wn-UVJ"/>
@@ -1965,6 +1971,220 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7aM-jw-5sa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2597.709923664122" y="2705.6338028169016"/>
+        </scene>
+        <!--Edit Profile Controller-->
+        <scene sceneID="6Tg-i8-FsN">
+            <objects>
+                <viewController storyboardIdentifier="EditProfileController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UYq-SN-bws" customClass="EditProfileController" customModule="cargo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0FT-rz-5yU">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="b3x-bn-Vpw">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="VVE-0w-0k4">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="620"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OfY-lT-A5h" userLabel="Photo">
+                                            <rect key="frame" x="135" y="40" width="120" height="120"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PhotoPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="dlr-ke-wmb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nry-P1-s3e" userLabel="Edit">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="tintColor" name="White"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <connections>
+                                                        <action selector="onClickPhoto:" destination="UYq-SN-bws" eventType="touchUpInside" id="rmg-qq-AjV"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PenWhite" translatesAutoresizingMaskIntoConstraints="NO" id="Ebz-A7-vuM">
+                                                    <rect key="frame" x="50" y="50" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GsM-Gj-71S" userLabel="Signup">
+                                            <rect key="frame" x="16" y="195" width="358" height="330"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzu-DV-vSx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="68" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
+                                                    <color key="textColor" name="TextLabel"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s3v-Id-9hA" userLabel="Full Name">
+                                                    <rect key="frame" x="0.0" y="24" width="357" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S3F-Ko-Qle">
+                                                            <rect key="frame" x="16" y="0.0" width="325" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <color key="textColor" name="TextDark"/>
+                                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="InputBackground"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyU-kH-vzC">
+                                                    <rect key="frame" x="0.0" y="84" width="95" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
+                                                    <color key="textColor" name="TextLabel"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4rA-xI-VTG" userLabel="Email">
+                                                    <rect key="frame" x="0.0" y="108" width="357" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nVy-9Q-HED">
+                                                            <rect key="frame" x="16" y="0.0" width="325" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <color key="textColor" name="TextDark"/>
+                                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="InputBackground"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpx-yV-HSU">
+                                                    <rect key="frame" x="0.0" y="168" width="101" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
+                                                    <color key="textColor" name="TextLabel"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ugv-W8-QyG" userLabel="Phone">
+                                                    <rect key="frame" x="0.0" y="192" width="357" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZT-lD-0BO">
+                                                            <rect key="frame" x="16" y="0.0" width="325" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <color key="textColor" name="TextDark"/>
+                                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="InputBackground"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vehicle Dimensions (in meter)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scr-Ku-Lw7">
+                                                    <rect key="frame" x="0.0" y="252" width="199" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
+                                                    <color key="textColor" name="TextLabel"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BJB-Jt-fNc" userLabel="Vehicle Dimensions">
+                                                    <rect key="frame" x="0.0" y="276" width="357" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qOH-6V-ROl" userLabel="Length">
+                                                            <rect key="frame" x="0.0" y="0.0" width="99" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Length" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6B-uA-kH3">
+                                                                    <rect key="frame" x="16" y="0.0" width="67" height="44"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                                    <color key="textColor" name="TextDark"/>
+                                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                            </subviews>
+                                                            <color key="backgroundColor" name="InputBackground"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a13-6A-gQq" userLabel="Width">
+                                                            <rect key="frame" x="129" y="0.0" width="99" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Width" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yQG-Da-72T">
+                                                                    <rect key="frame" x="16" y="0.0" width="67" height="44"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                                    <color key="textColor" name="TextDark"/>
+                                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                            </subviews>
+                                                            <color key="backgroundColor" name="InputBackground"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQ7-xV-KGJ" userLabel="Height">
+                                                            <rect key="frame" x="258" y="0.0" width="99" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Height" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4np-AE-OzX">
+                                                                    <rect key="frame" x="16" y="0.0" width="67" height="44"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                                    <color key="textColor" name="TextDark"/>
+                                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                            </subviews>
+                                                            <color key="backgroundColor" name="InputBackground"/>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9e-V5-sGj">
+                                            <rect key="frame" x="95" y="550" width="200" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" name="TextGray"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="Submit">
+                                                <color key="titleColor" name="White"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onClickSubmit:" destination="UYq-SN-bws" eventType="touchUpInside" id="0e3-ej-NaS"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="syL-A4-uBM"/>
+                        <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstItem="b3x-bn-Vpw" firstAttribute="top" secondItem="syL-A4-uBM" secondAttribute="top" id="IaN-gJ-B2q"/>
+                            <constraint firstItem="syL-A4-uBM" firstAttribute="bottom" secondItem="b3x-bn-Vpw" secondAttribute="bottom" id="aEm-fm-0cd"/>
+                            <constraint firstAttribute="trailing" secondItem="b3x-bn-Vpw" secondAttribute="trailing" id="e4J-Xc-vFL"/>
+                            <constraint firstItem="b3x-bn-Vpw" firstAttribute="leading" secondItem="0FT-rz-5yU" secondAttribute="leading" id="gvd-fs-fhu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailText" destination="nVy-9Q-HED" id="WIo-cH-WjO"/>
+                        <outlet property="emailView" destination="4rA-xI-VTG" id="eeY-ba-800"/>
+                        <outlet property="heightText" destination="4np-AE-OzX" id="Fz2-3c-L27"/>
+                        <outlet property="heightView" destination="eQ7-xV-KGJ" id="2sX-dH-zq3"/>
+                        <outlet property="lengthText" destination="P6B-uA-kH3" id="UYr-3d-aUz"/>
+                        <outlet property="lengthView" destination="qOH-6V-ROl" id="yaT-me-ciJ"/>
+                        <outlet property="nameText" destination="S3F-Ko-Qle" id="0OZ-Tp-chl"/>
+                        <outlet property="nameView" destination="s3v-Id-9hA" id="qoG-8j-283"/>
+                        <outlet property="penImage" destination="Ebz-A7-vuM" id="J3l-G0-gqZ"/>
+                        <outlet property="phoneText" destination="1ZT-lD-0BO" id="xn5-EY-8Pw"/>
+                        <outlet property="phoneView" destination="Ugv-W8-QyG" id="lOh-fO-By3"/>
+                        <outlet property="submitButton" destination="g9e-V5-sGj" id="9N3-uq-rLa"/>
+                        <outlet property="userImage" destination="dlr-ke-wmb" id="Zc2-Fz-TOx"/>
+                        <outlet property="widthText" destination="yQG-Da-72T" id="VK8-t5-VX6"/>
+                        <outlet property="widthView" destination="a13-6A-gQq" id="5bs-ec-KOP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1cd-O5-d2S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3261.5384615384614" y="2704.9763033175354"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="M0u-hB-ajN">

@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import GooglePlaces
 
 class ProfileViewController: UIViewController {
     
@@ -18,6 +19,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var loadsLabel: UILabel!
+    @IBOutlet weak var addressText: UITextField!
+    @IBOutlet weak var editProfileButton: UIButton!
     
     // MARK: - Method
 
@@ -25,6 +28,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.notifyProfileUpdated), object: nil, queue: OperationQueue.main) { notification in
+            self.showUserInfo()
+        }
         
         initLayout()
     }
@@ -61,13 +68,28 @@ class ProfileViewController: UIViewController {
         // Logout Button
         logoutButton.setBorder(UIColor(named: "ButtonBorderRed")!)
         
+        // User Info
         userImage.setBorder(UIColor(named: "White")!, cornerRadius: Constants.cornerRadius1)
         
+        addressText.setPlaceholder("Enter Address")
+        addressText.delegate = self
+        
+        editProfileButton.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+        editProfileButton.layer.cornerRadius = Constants.cornerRadius0
+        editProfileButton.clipsToBounds = true
+        
+        // --------------------
+        
+        showUserInfo()
+    }
+    
+    private func showUserInfo() {
         let user = User.user()
         nameLabel.text = user.name
         emailLabel.text = user.email
         phoneLabel.text = user.phone
         loadsLabel.text = "0 Loads"
+        addressText.text = user.address
         
         if !user.photo.isEmpty {
             userImage.sd_setImage(with: URL(string: user.photo), placeholderImage: UIImage.defaultUserPhoto(), options: .continueInBackground) { image, error, cacheType, url in
@@ -76,8 +98,35 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    private func presentAddressAutoComplete() {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+
+        // Specify the place data types to return.
+        let fields: GMSPlaceField = GMSPlaceField(
+            rawValue: GMSPlaceField.name.rawValue | GMSPlaceField.placeID.rawValue | GMSPlaceField.coordinate.rawValue | GMSPlaceField.addressComponents.rawValue | GMSPlaceField.formattedAddress.rawValue
+        )
+        autocompleteController.placeFields = fields
+
+        // Specify a filter.
+        let filter = GMSAutocompleteFilter()
+        filter.types = ["address"]
+        autocompleteController.autocompleteFilter = filter
+
+        // Display the autocomplete view controller.
+        present(autocompleteController, animated: true, completion: nil)
+    }
+    
     // MARK: - Action
 
+    @IBAction func onClickEditProfile(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "EditProfileController") as? EditProfileController else {
+            return
+        }
+        vc.modalPresentationStyle = .formSheet
+        present(vc, animated: true)
+    }
+    
     @IBAction func onClickLogout(_ sender: Any) {
         Alert.showAlert(Constants.appName, message: "Are you sure that you want to log out?", from: self) { yesAction in
             FirebaseService.logout()
@@ -88,6 +137,47 @@ class ProfileViewController: UIViewController {
         }
     }
 }
+
+// MARK: - GMSAutocompleteViewControllerDelegate
+
+extension ProfileViewController: GMSAutocompleteViewControllerDelegate {
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        viewController.dismiss(animated: true)
+        
+        addressText.text = place.formattedAddress
+        
+        var user = User.user()
+        user.address = place.formattedAddress ?? ""
+        user.latitude = place.coordinate.latitude
+        user.longitude = place.coordinate.longitude
+        
+        user.save(sync: true)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        viewController.dismiss(animated: true)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        viewController.dismiss(animated: true)
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+
+extension ProfileViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == addressText {
+            presentAddressAutoComplete()
+        }
+        return true
+    }
+    
+}
+
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 

@@ -1,5 +1,6 @@
 PODS:
   - AFViewShaker (0.0.5)
+  - GooglePlaces (8.2.0)
   - MBProgressHUD (1.2.0)
   - SDWebImage (5.18.0):
     - SDWebImage/Core (= 5.18.0)
@@ -7,20 +8,23 @@ PODS:
 
 DEPENDENCIES:
   - AFViewShaker
+  - GooglePlaces
   - MBProgressHUD
   - SDWebImage
 
 SPEC REPOS:
   trunk:
     - AFViewShaker
+    - GooglePlaces
     - MBProgressHUD
     - SDWebImage
 
 SPEC CHECKSUMS:
   AFViewShaker: fc201fa4c0030e3f4875b9f84ac0763828518b00
+  GooglePlaces: b3003ef492e6b60d6cb8aa24026935dac2a3b658
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   SDWebImage: 182830bcddc30cde95fbc60dfe4badc3553d94ba
 
-PODFILE CHECKSUM: a25c21a371c6cdf111e3920bbb9c1ff0073cd573
+PODFILE CHECKSUM: bb61b754d8e2ac2c320bbf1c50a139f40c426b34
 
 COCOAPODS: 1.12.0

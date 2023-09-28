@@ -11,6 +11,8 @@ class Constants: NSObject {
     
     static let appName = "ECT CARGO"
     
+    static let googleAPIKey = "AIzaSyCc60YVL8fhVeQk013kntclJiBCZ53xKkg"
+    
     // MARK: - UI Layout
     class var screenHei: CGFloat {
         return UIScreen.main.bounds.size.width < UIScreen.main.bounds.size.height ? UIScreen.main.bounds.size.height: UIScreen.main.bounds.size.width
@@ -36,5 +38,6 @@ class Constants: NSObject {
     
     static let notifyPresentDashboard = "present_dashboard"
     static let notifyPresentLogin = "present_login"
+    static let notifyProfileUpdated = "profile_updated"
 
 }
