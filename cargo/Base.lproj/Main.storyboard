@@ -519,6 +519,9 @@
                                                 <state key="normal" image="PenWhite">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="heavy"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onClickEditAddress:" destination="Yum-YJ-tOc" eventType="touchUpInside" id="CwP-Sq-K0C"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.22352941176470587" green="0.74901960784313726" blue="0.99215686274509807" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -554,7 +557,7 @@
                                         <color key="textColor" name="TextDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNn-gG-64M">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNn-gG-64M">
                                         <rect key="frame" x="310" y="7" width="64" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
@@ -719,7 +722,7 @@
                                                                     </constraints>
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgb-ks-yle">
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgb-ks-yle">
                                                                     <rect key="frame" x="27.999999999999996" y="9.6666666666666572" width="34.666666666666657" height="16"/>
                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
                                                                     <color key="textColor" name="TextRed"/>
@@ -790,8 +793,12 @@
                                         <connections>
                                             <outlet property="addressView" destination="PNJ-DI-iWr" id="9w3-25-EwE"/>
                                             <outlet property="containerView" destination="YLr-hE-np8" id="o0a-JD-yQY"/>
+                                            <outlet property="deliverToAddressLabel" destination="rKh-sN-uEr" id="tie-E1-rJM"/>
                                             <outlet property="detailButton" destination="pyb-pV-VJ6" id="Vgl-hd-MWD"/>
+                                            <outlet property="milesLabel" destination="Uqo-YU-dE1" id="dPS-1d-17n"/>
+                                            <outlet property="pickupAddressLabel" destination="rVL-Ln-0gM" id="zOG-Fq-SXV"/>
                                             <outlet property="seeDetailsView" destination="VIO-du-uQD" id="3Bx-jc-rs5"/>
+                                            <outlet property="weightLabel" destination="iqr-HP-JIY" id="KJe-8E-0Gj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1013,7 +1020,7 @@
                                                     <state key="selected" image="arrow.down.right.and.arrow.up.left" catalog="system"/>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEB-Qe-X2E" userLabel="Info">
-                                                    <rect key="frame" x="16" y="48" width="358" height="140"/>
+                                                    <rect key="frame" x="16" y="48" width="358" height="238"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total load miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-vA-ZIY">
                                                             <rect key="frame" x="0.0" y="0.0" width="179" height="14"/>
@@ -1029,7 +1036,7 @@
                                                             <color key="textColor" name="TextDark"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Empty miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MV3-Bk-Nnu">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pieces" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MV3-Bk-Nnu">
                                                             <rect key="frame" x="179" y="0.0" width="179" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="11"/>
@@ -1043,7 +1050,7 @@
                                                             <color key="textColor" name="TextDark"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total cargo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM2-WX-wup">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XM2-WX-wup">
                                                             <rect key="frame" x="0.0" y="50" width="179" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="11"/>
@@ -1078,7 +1085,7 @@
                                                             <color key="textColor" name="TextDark"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Truck Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpw-u1-7jQ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expire At" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gpw-u1-7jQ">
                                                             <rect key="frame" x="0.0" y="100" width="179" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="11"/>
@@ -1091,20 +1098,11 @@
                                                         <constraint firstAttribute="height" constant="140" id="FL1-BS-mVB"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAk-Ui-aTJ">
-                                                    <rect key="frame" x="16" y="204" width="55" height="22"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
-                                                    <color key="textColor" name="TextDark"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chk-Ta-XMn">
-                                                    <rect key="frame" x="16" y="234" width="358" height="52"/>
-                                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
-                                                    <color key="textColor" name="TextLightGray"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH4-P5-fKQ">
                                                     <rect key="frame" x="15.999999999999993" y="302" width="96.333333333333314" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="IR8-io-byH"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="18"/>
                                                     <color key="textColor" name="TextDark"/>
                                                     <nil key="highlightedColor"/>
@@ -1170,22 +1168,27 @@
                                                 <constraint firstItem="nD1-Yp-JdG" firstAttribute="leading" secondItem="eQm-3Z-Vjl" secondAttribute="leading" constant="16" id="Ctn-Pu-GY8"/>
                                                 <constraint firstAttribute="bottom" secondItem="glL-pg-BUL" secondAttribute="bottom" constant="16" id="MhB-fm-66l"/>
                                                 <constraint firstItem="gEB-Qe-X2E" firstAttribute="leading" secondItem="eQm-3Z-Vjl" secondAttribute="leading" constant="16" id="NKh-Md-93U"/>
-                                                <constraint firstItem="oAk-Ui-aTJ" firstAttribute="leading" secondItem="eQm-3Z-Vjl" secondAttribute="leading" constant="16" id="Swm-CI-v79"/>
-                                                <constraint firstItem="chk-Ta-XMn" firstAttribute="leading" secondItem="eQm-3Z-Vjl" secondAttribute="leading" constant="16" id="T2K-ey-xaB"/>
-                                                <constraint firstItem="aH4-P5-fKQ" firstAttribute="top" secondItem="chk-Ta-XMn" secondAttribute="bottom" constant="16" id="Wvf-b5-VgL"/>
                                                 <constraint firstItem="3wW-Mg-ltJ" firstAttribute="top" secondItem="eQm-3Z-Vjl" secondAttribute="top" constant="10" id="Zv1-v9-RYV"/>
                                                 <constraint firstItem="aH4-P5-fKQ" firstAttribute="leading" secondItem="eQm-3Z-Vjl" secondAttribute="leading" constant="16" id="az2-za-q57"/>
                                                 <constraint firstItem="gEB-Qe-X2E" firstAttribute="top" secondItem="3wW-Mg-ltJ" secondAttribute="bottom" constant="8" id="dLG-nb-EOS"/>
-                                                <constraint firstAttribute="trailing" secondItem="chk-Ta-XMn" secondAttribute="trailing" constant="16" id="eSj-RM-3Mm"/>
                                                 <constraint firstAttribute="trailing" secondItem="glL-pg-BUL" secondAttribute="trailing" constant="16" id="gEW-gy-pp9"/>
                                                 <constraint firstAttribute="trailing" secondItem="3wW-Mg-ltJ" secondAttribute="trailing" constant="16" id="lzf-1M-WXn"/>
-                                                <constraint firstItem="chk-Ta-XMn" firstAttribute="top" secondItem="oAk-Ui-aTJ" secondAttribute="bottom" constant="8" id="vb6-gV-9eG"/>
-                                                <constraint firstItem="oAk-Ui-aTJ" firstAttribute="top" secondItem="gEB-Qe-X2E" secondAttribute="bottom" constant="16" id="zN1-wq-nmQ"/>
+                                                <constraint firstItem="aH4-P5-fKQ" firstAttribute="top" secondItem="gEB-Qe-X2E" secondAttribute="bottom" constant="16" id="pKS-iN-atG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="White"/>
                                         <connections>
+                                            <outlet property="dimsLabel" destination="ubG-y6-toj" id="Nz6-Lg-UKP"/>
+                                            <outlet property="expandButton" destination="3wW-Mg-ltJ" id="qta-yC-eBc"/>
+                                            <outlet property="expireAtLabel" destination="Fnb-ob-QKQ" id="M4y-3P-Mel"/>
+                                            <outlet property="infoView" destination="gEB-Qe-X2E" id="6Oj-J1-a7W"/>
+                                            <outlet property="infoViewHeight" destination="FL1-BS-mVB" id="Htk-eS-3t4"/>
+                                            <outlet property="milesLabel" destination="sYH-Be-l3j" id="NEG-sF-yns"/>
+                                            <outlet property="perMileLabel" destination="Yho-Er-NVA" id="p8Q-o2-jnW"/>
                                             <outlet property="perMileView" destination="lm0-e4-FG8" id="jjU-sS-1ec"/>
+                                            <outlet property="piecesLabel" destination="rhx-dS-DSr" id="HC1-dR-hAT"/>
+                                            <outlet property="weightLabel" destination="OdR-SC-9l6" id="Czi-5b-BbL"/>
+                                            <outlet property="yourBidLabel" destination="Zbt-Zv-ZZi" id="HVp-8q-b0I"/>
                                             <outlet property="yourBidView" destination="HFq-Ly-bPw" id="cf3-AL-oZs"/>
                                         </connections>
                                     </tableViewCell>
@@ -1203,6 +1206,9 @@
                                         <state key="normal" title="Cancel Bid">
                                             <color key="titleColor" name="TextLightGray"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onClickCancelBid:" destination="Sck-8W-gtR" eventType="touchUpInside" id="E1e-Qm-LBG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ju6-Zw-P8f">
                                         <rect key="frame" x="213" y="10" width="150" height="44"/>
@@ -1244,6 +1250,10 @@
                         <outlet property="addressView" destination="v3h-xc-Zld" id="NP4-Tf-Fxh"/>
                         <outlet property="bottomView" destination="cb8-F0-3ZE" id="fa7-9v-VRl"/>
                         <outlet property="cancelBidButton" destination="EqE-fl-9Xt" id="XEW-nY-8ls"/>
+                        <outlet property="deliverToAddressLabel" destination="Tve-iV-XGt" id="gmL-Ph-POH"/>
+                        <outlet property="deliveryDateLabel" destination="hJO-8G-V34" id="f4a-lg-mcs"/>
+                        <outlet property="pickupAddressLabel" destination="ZB2-jv-HIc" id="eJb-Ph-rUx"/>
+                        <outlet property="pickupDateLabel" destination="iQ2-xg-TFy" id="qkH-QK-zOX"/>
                         <outlet property="placeBidButton" destination="Ju6-Zw-P8f" id="dFG-9w-Zmh"/>
                         <outlet property="tableView" destination="jQh-Vw-omx" id="JVU-tl-nxX"/>
                     </connections>
@@ -1386,6 +1396,9 @@
                                                 <state key="normal" title="Place">
                                                     <color key="titleColor" name="White"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onClickPlace:" destination="hz1-G7-sxn" eventType="touchUpInside" id="QiC-Y2-ixF"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" name="White"/>
@@ -1434,11 +1447,11 @@
             <objects>
                 <viewController storyboardIdentifier="ChatsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6n1-ea-jpA" customClass="ChatsViewController" customModule="cargo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RIe-EC-9ws">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yp2-5x-CjC" userLabel="Background" customClass="GradientView" customModule="cargo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="761"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <color key="backgroundColor" name="TextGray"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -1450,7 +1463,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bGt-NC-ve9">
-                                <rect key="frame" x="0.0" y="91" width="390" height="670"/>
+                                <rect key="frame" x="0.0" y="91" width="390" height="719"/>
                                 <color key="backgroundColor" name="White"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatTableCell" rowHeight="74" id="jhz-aN-Wmf" customClass="ChatTableCell" customModule="cargo" customModuleProvider="target">
@@ -1852,8 +1865,8 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AnS-Vl-6pd" userLabel="Cargo">
                                                                             <rect key="frame" x="173" y="0.0" width="169" height="33"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Total cargo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brb-ik-pDa">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="62" height="13.666666666666666"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brb-ik-pDa">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="13.666666666666666"/>
                                                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="11"/>
                                                                                     <color key="textColor" name="TextLightGray"/>
                                                                                     <nil key="highlightedColor"/>
@@ -1919,6 +1932,12 @@
                                                 <connections>
                                                     <outlet property="addressView" destination="iNe-uF-iZh" id="ew8-wY-Iqf"/>
                                                     <outlet property="containerView" destination="awo-KQ-MuS" id="PXP-ID-cnk"/>
+                                                    <outlet property="deliverToAddressLabel" destination="4Xw-9L-Pjd" id="Z67-T1-8zI"/>
+                                                    <outlet property="loadNoLabel" destination="1JA-cj-GbB" id="BDj-Gn-Uvh"/>
+                                                    <outlet property="milesLabel" destination="842-hs-yPv" id="3YX-dc-DfU"/>
+                                                    <outlet property="pickupAddressLabel" destination="eAb-w4-ZpZ" id="Voh-Ej-l9P"/>
+                                                    <outlet property="priceLabel" destination="YeV-dR-8x9" id="ATk-bv-qfN"/>
+                                                    <outlet property="weightLabel" destination="CPt-9q-2ry" id="jyc-46-nxR"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -2349,7 +2368,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="addressInputView" destination="4fI-Dc-sVG" id="ZnT-t0-58e"/>
+                                            <outlet property="addressText" destination="1cV-HY-fNm" id="ml6-ey-8oL"/>
                                             <outlet property="addressView" destination="NQi-Wf-HQo" id="x3X-k3-VYa"/>
+                                            <outlet property="availableLabel" destination="AbK-4u-EzG" id="NZX-R5-ElJ"/>
+                                            <outlet property="editAddressButton" destination="p3y-IQ-sAu" id="HNQ-vj-eSA"/>
                                             <outlet property="scheduleButton" destination="h6J-GR-L7N" id="AgT-4c-Nq9"/>
                                         </connections>
                                     </tableViewCell>
@@ -2515,8 +2537,8 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GN-pm-Nin" userLabel="Cargo">
                                                                     <rect key="frame" x="166.66666666666663" y="0.0" width="162.33333333333337" height="33"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Total cargo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2d-A9-EuK">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="62" height="13"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2d-A9-EuK">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="13"/>
                                                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="11"/>
                                                                             <color key="textColor" name="TextLightGray"/>
                                                                             <nil key="highlightedColor"/>
@@ -2615,7 +2637,13 @@
                                             <outlet property="acceptButton" destination="zmY-7O-pGC" id="x5P-nf-JXf"/>
                                             <outlet property="addressView" destination="dTy-sv-ioV" id="7v7-8g-nEz"/>
                                             <outlet property="containerView" destination="rrL-c0-dS8" id="wfO-fp-yQc"/>
+                                            <outlet property="delivertoAddressLabel" destination="U5Q-Q2-Ucx" id="4Wo-wI-d4c"/>
+                                            <outlet property="loadNoLabel" destination="TTx-gB-Twk" id="148-hI-Ulc"/>
+                                            <outlet property="milesLabel" destination="iDb-bd-SZm" id="BM6-ge-UZP"/>
+                                            <outlet property="pickupAddressLabel" destination="ibN-6y-bBN" id="hqs-Hc-m5p"/>
+                                            <outlet property="priceLabel" destination="tLs-iR-58X" id="4xs-iv-C21"/>
                                             <outlet property="viewButton" destination="l0F-dw-lzh" id="zzO-jp-kG6"/>
+                                            <outlet property="weightLabel" destination="loy-qz-m7o" id="RKP-U7-Bkg"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTransitTableCell" rowHeight="280" id="E7z-Cm-7av" customClass="HomeTransitTableCell" customModule="cargo" customModuleProvider="target">
@@ -3194,7 +3222,6 @@ address below?</string>
                     <connections>
                         <segue destination="lcc-LB-fbD" kind="relationship" relationship="viewControllers" id="ebz-cf-wEV"/>
                         <segue destination="1Fl-bE-ghK" kind="relationship" relationship="viewControllers" id="pNL-9h-fEK"/>
-                        <segue destination="aJ3-yb-nQr" kind="relationship" relationship="viewControllers" id="G9T-cb-odr"/>
                         <segue destination="0Fc-Rk-kue" kind="relationship" relationship="viewControllers" id="9i8-JV-KMv"/>
                     </connections>
                 </tabBarController>
@@ -3255,6 +3282,7 @@ address below?</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="G3V-DS-Yr4">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="White"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="White"/>
                         </textAttributes>
@@ -3300,6 +3328,7 @@ address below?</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cp6-Ws-FfW">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="White"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="White"/>
                         </textAttributes>
@@ -3322,6 +3351,7 @@ address below?</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rjQ-mV-MLg">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="White"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="White"/>
                         </textAttributes>

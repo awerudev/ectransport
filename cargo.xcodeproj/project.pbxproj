@@ -50,6 +50,7 @@
 		18344B742ABA48A5006B8DB4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B732ABA48A5006B8DB4 /* IQKeyboardManagerSwift */; };
 		184EA4D72AC2EB6C0054E9C0 /* LoadInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EA4D62AC2EB6C0054E9C0 /* LoadInfoController.swift */; };
 		185346032ABBF57E004AE37A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185346022ABBF57E004AE37A /* GradientView.swift */; };
+		186AADB72AC7D12E00881D20 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AADB62AC7D12E00881D20 /* LoadData.swift */; };
 		187724032AC1CDE100E7905B /* HomeAddressTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187724022AC1CDE100E7905B /* HomeAddressTableCell.swift */; };
 		187724052AC1CE5F00E7905B /* HomeNoLoadTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187724042AC1CE5F00E7905B /* HomeNoLoadTableCell.swift */; };
 		1877F1622AC36B870029ACE8 /* ArriveConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1877F1612AC36B870029ACE8 /* ArriveConfirmController.swift */; };
@@ -63,6 +64,7 @@
 		189C1F1C2AC290F500BDF248 /* HomeTransitTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C1F1B2AC290F500BDF248 /* HomeTransitTableCell.swift */; };
 		18AC9DE32ABFFD5E00B1B85E /* ChatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */; };
 		18AFB2902AC3E128003D6D5D /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AFB28F2AC3E128003D6D5D /* EditProfileController.swift */; };
+		18B25C102AC88254004E9A0D /* BidInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B25C0F2AC88254004E9A0D /* BidInfo.swift */; };
 		18DA780E2AC127A000719118 /* ProfileLoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA780D2AC127A000719118 /* ProfileLoadCell.swift */; };
 		18DA78112AC12A0C00719118 /* BidDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA78102AC12A0C00719118 /* BidDetailController.swift */; };
 		18DA78132AC1304500719118 /* BidMoreInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA78122AC1304500719118 /* BidMoreInfoCell.swift */; };
@@ -110,6 +112,7 @@
 		184EA4D62AC2EB6C0054E9C0 /* LoadInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadInfoController.swift; sourceTree = "<group>"; };
 		184EA4D82AC2EDF20054E9C0 /* cargo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cargo.entitlements; sourceTree = "<group>"; };
 		185346022ABBF57E004AE37A /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		186AADB62AC7D12E00881D20 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
 		187724022AC1CDE100E7905B /* HomeAddressTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAddressTableCell.swift; sourceTree = "<group>"; };
 		187724042AC1CE5F00E7905B /* HomeNoLoadTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNoLoadTableCell.swift; sourceTree = "<group>"; };
 		1877F1612AC36B870029ACE8 /* ArriveConfirmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArriveConfirmController.swift; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 		189C1F1B2AC290F500BDF248 /* HomeTransitTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTransitTableCell.swift; sourceTree = "<group>"; };
 		18AC9DE22ABFFD5E00B1B85E /* ChatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableCell.swift; sourceTree = "<group>"; };
 		18AFB28F2AC3E128003D6D5D /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
+		18B25C0F2AC88254004E9A0D /* BidInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidInfo.swift; sourceTree = "<group>"; };
 		18DA780D2AC127A000719118 /* ProfileLoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLoadCell.swift; sourceTree = "<group>"; };
 		18DA78102AC12A0C00719118 /* BidDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidDetailController.swift; sourceTree = "<group>"; };
 		18DA78122AC1304500719118 /* BidMoreInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidMoreInfoCell.swift; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				1877F1652AC38E1E0029ACE8 /* User.swift */,
+				186AADB62AC7D12E00881D20 /* LoadData.swift */,
+				18B25C0F2AC88254004E9A0D /* BidInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -539,6 +545,7 @@
 				18DA78132AC1304500719118 /* BidMoreInfoCell.swift in Sources */,
 				18344B4A2ABA3C04006B8DB4 /* LoginViewController.swift in Sources */,
 				182A63042ABA9FB700DFE8F2 /* BidsViewController.swift in Sources */,
+				18B25C102AC88254004E9A0D /* BidInfo.swift in Sources */,
 				182A63062ABA9FC000DFE8F2 /* ChatsViewController.swift in Sources */,
 				18DA780E2AC127A000719118 /* ProfileLoadCell.swift in Sources */,
 				185346032ABBF57E004AE37A /* GradientView.swift in Sources */,
@@ -548,6 +555,7 @@
 				1877F1642AC38D2D0029ACE8 /* Alert.swift in Sources */,
 				184EA4D72AC2EB6C0054E9C0 /* LoadInfoController.swift in Sources */,
 				18AFB2902AC3E128003D6D5D /* EditProfileController.swift in Sources */,
+				186AADB72AC7D12E00881D20 /* LoadData.swift in Sources */,
 				189C1F1A2AC28C8400BDF248 /* HomeLoadTableCell.swift in Sources */,
 				18DA78112AC12A0C00719118 /* BidDetailController.swift in Sources */,
 				182A63002ABA9E9F00DFE8F2 /* MainTabController.swift in Sources */,
@@ -713,7 +721,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = cargo/cargo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = H56XXGRY7F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cargo/Info.plist;
@@ -747,7 +755,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = cargo/cargo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = H56XXGRY7F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cargo/Info.plist;

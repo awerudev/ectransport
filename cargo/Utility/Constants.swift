@@ -39,5 +39,6 @@ class Constants: NSObject {
     static let notifyPresentDashboard = "present_dashboard"
     static let notifyPresentLogin = "present_login"
     static let notifyProfileUpdated = "profile_updated"
+    static let notifyPresentBids = "present_bids"
 
 }

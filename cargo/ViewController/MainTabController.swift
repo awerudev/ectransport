@@ -15,6 +15,10 @@ class MainTabController: UITabBarController {
         // Do any additional setup after loading the view.
         
         tabBar.isTranslucent = false
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.notifyPresentBids), object: nil, queue: OperationQueue.main) { notification in
+            self.selectedIndex = 1
+        }
     }
     
 

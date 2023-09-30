@@ -13,6 +13,10 @@ class BidTableCell: UITableViewCell {
     @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var seeDetailsView: UIView!
     @IBOutlet weak var detailButton: UIButton!
+    @IBOutlet weak var pickupAddressLabel: UILabel!
+    @IBOutlet weak var deliverToAddressLabel: UILabel!
+    @IBOutlet weak var milesLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +38,15 @@ class BidTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: - My Method
+    
+    func showLoadInfo(_ loadInfo: LoadData) {
+        pickupAddressLabel.text = loadInfo.pickupAt.formattedAddress.isEmpty ? "-": loadInfo.pickupAt.formattedAddress
+        deliverToAddressLabel.text = loadInfo.deliverTo.formattedAddress.isEmpty ? "-": loadInfo.deliverTo.formattedAddress
+        milesLabel.text = loadInfo.miles.isEmpty ? "-": "\(loadInfo.miles) miles"
+        weightLabel.text = loadInfo.weight.isEmpty ? "-": "\(loadInfo.weight) lb"
     }
 
 }

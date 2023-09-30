@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var addressText: UITextField!
     @IBOutlet weak var editProfileButton: UIButton!
     
+    private var myBids = [BidInfo]()
+    
     // MARK: - Method
 
     override func viewDidLoad() {
@@ -40,6 +42,8 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        getMyBids()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -117,6 +121,14 @@ class ProfileViewController: UIViewController {
         present(autocompleteController, animated: true, completion: nil)
     }
     
+    private func getMyBids() {
+        FirebaseService.getBids { items, error in
+            self.myBids = []
+            self.myBids.append(contentsOf: items)
+            self.tableView.reloadData()
+        }
+    }
+    
     // MARK: - Action
 
     @IBAction func onClickEditProfile(_ sender: Any) {
@@ -188,7 +200,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return myBids.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -202,12 +214,26 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileLoadCell", for: indexPath) as! ProfileLoadCell
         
+        if myBids.count > indexPath.row {
+            let bidInfo = myBids[indexPath.row]
+            cell.showBidInfo(bidInfo)
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if myBids.count > indexPath.row {
+            let bidInfo = myBids[indexPath.row]
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "BidDetailController") as? BidDetailController else {
+                return
+            }
+            vc.loadInfo = bidInfo.toLoadData()
+            vc.bidInfo = bidInfo
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

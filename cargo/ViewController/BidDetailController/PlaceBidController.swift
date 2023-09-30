@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import AFViewShaker
 
 class PlaceBidController: UIViewController {
+    
+    var onPlacePrices: ((Double, Double) -> Void)?
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var contentView: UIView!
@@ -68,8 +71,8 @@ class PlaceBidController: UIViewController {
         totalPriceView.setBorder()
         priceMileView.setBorder()
         
-        totalPriceText.keyboardType = .numberPad
-        priceMileText.keyboardType = .numberPad
+        totalPriceText.keyboardType = .numbersAndPunctuation
+        priceMileText.keyboardType = .numbersAndPunctuation
         
         cancelButton.setBorder(UIColor(named: "ViewBorderThick")!)
         placeButton.setBorder(UIColor(named: "TextGray")!)
@@ -121,7 +124,47 @@ class PlaceBidController: UIViewController {
         }
     }
     
+    private func validate() -> Bool {
+        var arrViews = [UIView]()
+        if let value = totalPriceText.text {
+            if value.isEmpty || Double(value) == nil {
+                arrViews.append(totalPriceView)
+            }
+        }
+        if let value = priceMileText.text {
+            if value.isEmpty || Double(value) == nil {
+                arrViews.append(priceMileView)
+            }
+        }
+        
+        if arrViews.count > 0 {
+            if let shaker = AFViewShaker(viewsArray: arrViews) {
+                shaker.shake()
+            }
+            return false
+        }
+        
+        return true
+    }
+    
     // MARK: - Action
+    
+    @IBAction func onClickPlace(_ sender: Any) {
+        guard validate() else {
+            return
+        }
+        
+        let totalPrice = Double(totalPriceText.text!) ?? 0
+        let milePrice = Double(priceMileText.text!) ?? 0
+        
+        hideContentViewWithCompletion { finish in
+            self.dismiss(animated: true) {
+                if let onPlacePrices = self.onPlacePrices {
+                    onPlacePrices(totalPrice, milePrice)
+                }
+            }
+        }
+    }
     
     @IBAction func onClickCancel(_ sender: Any) {
         hideContentViewWithCompletion { (finish) in

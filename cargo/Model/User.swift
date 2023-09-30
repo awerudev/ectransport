@@ -15,6 +15,13 @@ enum ProfileStatus: Int {
     case deleted = 3
 }
 
+enum UserAvailability: Int, Codable {
+    case notAvailable = 0
+    case available = 1
+}
+
+// MARK: - VehicleDimension
+
 struct VehicleDimension: Codable {
     
     var length: Double = 0
@@ -46,6 +53,8 @@ struct VehicleDimension: Codable {
     }
 }
 
+// MARK: - User Model
+
 struct User: Codable {
     
     var id = ""
@@ -56,9 +65,11 @@ struct User: Codable {
     var status = 0
     var vehicle: VehicleDimension = VehicleDimension()
     var photo = ""
+    
     var address = ""
     var latitude: CLLocationDegrees = 0
     var longitude: CLLocationDegrees = 0
+    var availability: UserAvailability = .notAvailable
     
     init() {
         
@@ -95,6 +106,9 @@ struct User: Codable {
         if let value = dic["longitude"] as? CLLocationDegrees {
             longitude = value
         }
+        if let value = dic["available"] as? Int, let enumValue = UserAvailability(rawValue: value) {
+            availability = enumValue
+        }
     }
     
     func statusValue() -> ProfileStatus {
@@ -112,7 +126,8 @@ struct User: Codable {
             "photo"    : photo,
             "address"  : address,
             "latitude" : latitude,
-            "longitude": longitude
+            "longitude": longitude,
+            "available": availability.rawValue
         ]
     }
     

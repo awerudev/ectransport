@@ -15,6 +15,8 @@ class FirebaseService: NSObject {
     // MARK: - Firestore
     
     static let users = Firestore.firestore().collection("users")
+    static let loads = Firestore.firestore().collection("loads")
+    static let bids = Firestore.firestore().collection("bids")
     
     // MARK: - Storage
     
@@ -72,6 +74,8 @@ class FirebaseService: NSObject {
                 user.id = currentUserId
                 user.save()
                 
+                NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyProfileUpdated), object: nil)
+                
                 completion?(user)
             }
         }
@@ -115,6 +119,116 @@ class FirebaseService: NSObject {
                     print("======= uploadUserPhoto downloadURL Success: \(url.absoluteString)")
                     completion?(url.absoluteString, nil)
                 }
+            }
+        }
+    }
+    
+    open class func getLastLoad(completion: ((LoadData?, Error?) -> Void)?) {
+        loads.order(by: "addedAt", descending: true).limit(to: 1).getDocuments { querySnapshot, error in
+            if let error = error {
+                print("=========== getLastLoad Error: \(error.localizedDescription)")
+                completion?(nil, error)
+                return
+            }
+            if let snapshot = querySnapshot {
+                for doc in snapshot.documents {
+                    completion?(LoadData(doc.data()), nil)
+                    return
+                }
+            }
+        }
+    }
+    
+    open class func addBid(_ bidInfo: BidInfo, completion: ((Error?) -> Void)?) {
+        guard let currentUserId = currentUserId else {
+            return
+        }
+        
+        bids.document(currentUserId).collection("bids").document("\(bidInfo.id)").setData(bidInfo.jsonObj()) { error in
+            if let error = error {
+                print("=========== addBid Error: \(error.localizedDescription)")
+                completion?(error)
+                return
+            }
+            completion?(nil)
+        }
+    }
+    
+    open class func getBidBy(id: String, completion: ((BidInfo?, Error?) -> Void)?) {
+        guard let currentUserId = currentUserId else {
+            return
+        }
+        
+        bids.document(currentUserId).collection("bids").document(id).getDocument { docSnapshot, error in
+            if let error = error {
+                print("============ getBidBy Error: \(error.localizedDescription)")
+                completion?(nil, error)
+                return
+            }
+            if let snapshot = docSnapshot, let data = snapshot.data() {
+                let bidInfo = BidInfo(data)
+                completion?(bidInfo, nil)
+                return
+            }
+            completion?(nil, nil)
+        }
+    }
+    
+    open class func cancelBidBy(id: String, completion: ((Error?) -> Void)?) {
+        guard let currentUserId = currentUserId else {
+            return
+        }
+        
+        bids.document(currentUserId).collection("bids").document(id).delete { error in
+            if let error = error {
+                print("============ cancelBidBy Error: \(error.localizedDescription)")
+                completion?(error)
+                return
+            }
+            completion?(nil)
+        }
+    }
+    
+    open class func getLoads(lastLoadID: Int, completion: (([LoadData], Error?) -> Void)?) {
+        var query = loads.order(by: "addedAt", descending: true).limit(to: 20)
+        if lastLoadID > 0 {
+            query = loads.whereField("id", isLessThan: lastLoadID)
+                .order(by: "id", descending: true)
+                .limit(to: 20)
+        }
+        query.getDocuments { querySnapshot, error in
+            if let error = error {
+                print("======== getLoads Error: \(error.localizedDescription)")
+                completion?([], error)
+                return
+            }
+            if let querySnapshot = querySnapshot {
+                var items = [LoadData]()
+                for doc in querySnapshot.documents {
+                    items.append(LoadData(doc.data()))
+                }
+                completion?(items, nil)
+            }
+        }
+    }
+    
+    open class func getBids(completion: (([BidInfo], Error?) -> Void)?) {
+        guard let currentUserId = currentUserId else {
+            return
+        }
+        
+        bids.document(currentUserId).collection("bids").order(by: "id", descending: true).getDocuments { querySnapshot, error in
+            if let error = error {
+                print("======== getBids Error: \(error.localizedDescription)")
+                completion?([], error)
+                return
+            }
+            if let querySnapshot = querySnapshot {
+                var items = [BidInfo]()
+                for doc in querySnapshot.documents {
+                    items.append(BidInfo(doc.data()))
+                }
+                completion?(items, nil)
             }
         }
     }

@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class BidDetailController: UIViewController {
+    
+    var loadInfo: LoadData? = nil
+    var bidInfo: BidInfo? = nil
+    var accept = false
 
     @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -15,6 +20,15 @@ class BidDetailController: UIViewController {
     @IBOutlet weak var cancelBidButton: UIButton!
     @IBOutlet weak var placeBidButton: UIButton!
     
+    @IBOutlet weak var pickupAddressLabel: UILabel!
+    @IBOutlet weak var deliverToAddressLabel: UILabel!
+    @IBOutlet weak var pickupDateLabel: UILabel!
+    @IBOutlet weak var deliveryDateLabel: UILabel!        
+    
+    private var bidPrice: Double = 0
+    private var milePrice: Double = 0
+    
+    private var isMoreInfo = false
     
     // MARK: - Method
     
@@ -24,12 +38,23 @@ class BidDetailController: UIViewController {
         // Do any additional setup after loading the view.
         
         initLayout()
+        updateLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        getBidBy()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if accept {
+            onClickPlaceBid(placeBidButton)
+        }
     }
 
     /*
@@ -63,18 +88,127 @@ class BidDetailController: UIViewController {
         
         cancelBidButton.setBorder(UIColor(named: "ViewBorderThick")!)
         placeBidButton.setBorder(UIColor(named: "TextGray")!)
+        
+        if let loadInfo = loadInfo {
+            pickupAddressLabel.text = loadInfo.pickupAt.formattedAddress.isEmpty ? "-": loadInfo.pickupAt.formattedAddress
+            deliverToAddressLabel.text = loadInfo.deliverTo.formattedAddress.isEmpty ? "-": loadInfo.deliverTo.formattedAddress
+            pickupDateLabel.text = loadInfo.pickupDate.isEmpty ? "-": loadInfo.pickupDate
+            deliveryDateLabel.text = loadInfo.deliverDate.isEmpty ? "-": loadInfo.deliverDate
+        }
+    }
+    
+    private func updateLayout() {
+        DispatchQueue.main.async {
+            if self.bidInfo != nil {
+                self.placeBidButton.isEnabled = false
+//                self.placeBidButton.setTitle("Already placed", for: .normal)
+                
+                self.tableView.reloadData()
+            }
+            else {
+                self.placeBidButton.isEnabled = true
+//                self.placeBidButton.setTitle("Place bid", for: .normal)
+                
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func getBidBy() {
+        guard let loadInfo = loadInfo else {
+            return
+        }
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        FirebaseService.getBidBy(id: "\(loadInfo.id)") { bid, error in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if let bid = bid {
+                self.bidPrice = bid.totalPrice
+                self.milePrice = bid.pricePerMile
+                self.bidInfo = bid
+                
+                self.updateLayout()
+            }
+        }
+    }
+    
+    private func placeBid() {
+        guard let loadInfo = loadInfo else {
+            return
+        }
+        
+        var bid = loadInfo.toBidInfo()
+        bid.totalPrice = bidPrice
+        bid.pricePerMile = milePrice
+        self.bidInfo = bid
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        FirebaseService.addBid(bid) { error in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if error == nil {
+                // Success
+                self.updateLayout()
+            }
+        }
+    }
+    
+    private func cancelBid() {
+        guard let bidInfo = bidInfo else {
+            return
+        }
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        FirebaseService.cancelBidBy(id: "\(bidInfo.id)") { error in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            self.bidInfo = nil
+            self.updateLayout()
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     // MARK: - Action
     
-    @IBAction func onClickPlaceBid(_ sender: Any) {
+    @IBAction func onClickPlaceBid(_ sender: UIButton) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "PlaceBidController") as? PlaceBidController else {
             return
+        }
+        vc.onPlacePrices = { (total, mile) in
+            self.bidPrice = total
+            self.milePrice = mile
+            
+            self.tableView.reloadData()
+            
+            Alert.showAlert(Constants.appName, message: "Are you sure that you want to place a bid?", from: self) { yesAction in
+                self.placeBid()
+            } negativeHandler: { noAction in
+                
+            }
         }
         
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true)
+    }
+    
+    @IBAction func onClickCancelBid(_ sender: Any) {
+        if let bidInfo = bidInfo {
+            Alert.showAlert(Constants.appName, message: "Are you sure that you want to cancel this bid?", from: self) { yesAction in
+                self.cancelBid()
+            } negativeHandler: { noAction in
+                
+            }
+        }
+        else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @objc
+    private func onClickMoreInfo(_ sender: UIButton) {
+        isMoreInfo = !isMoreInfo
+        
+        tableView.reloadData()
     }
 }
 
@@ -101,6 +235,24 @@ extension BidDetailController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BidMoreInfoCell", for: indexPath) as! BidMoreInfoCell
         
+        cell.expandButton.addTarget(self, action: #selector(onClickMoreInfo(_:)), for: .touchUpInside)
+        if isMoreInfo {
+            cell.expandButton.isSelected = true
+            cell.infoView.isHidden = false
+            cell.infoViewHeight.constant = 140
+        }
+        else {
+            cell.expandButton.isSelected = false
+            cell.infoView.isHidden = true
+            cell.infoViewHeight.constant = 0
+        }
+        cell.layoutIfNeeded()
+        
+        if let loadInfo = loadInfo {
+            cell.showLoadInfo(loadInfo)
+        }
+        
+        cell.showPriceInfo(bidPrice: bidPrice, milePrice: milePrice)
         
         return cell
     }
