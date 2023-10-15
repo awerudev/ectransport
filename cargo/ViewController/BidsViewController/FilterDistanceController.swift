@@ -1,23 +1,22 @@
 //
-//  PlaceBidController.swift
+//  FilterDistanceController.swift
 //  cargo
 //
-//  Created by Apple on 9/24/23.
+//  Created by Apple on 10/11/23.
 //
 
 import UIKit
-import AFViewShaker
 
-class PlaceBidController: UIViewController {
+class FilterDistanceController: UIViewController {
     
-    var onPlacePrices: ((Double) -> Void)?
-
+    var onSearch: (() -> Void)? = nil
+    
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var totalPriceView: UIView!
-    @IBOutlet weak var totalPriceText: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var placeButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var distanceSlider: UISlider!
     
     /// 270
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
@@ -25,7 +24,8 @@ class PlaceBidController: UIViewController {
     private let INIT_HEI: CGFloat = 270
     private var currentHei: CGFloat = 0
     
-    
+    private var distance: Int = 10
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,13 +65,12 @@ class PlaceBidController: UIViewController {
         contentView.addGestureRecognizer(panGesture)
         contentView.isUserInteractionEnabled = true
         
-        // Input Fields
-        totalPriceView.setBorder()
-        
-        totalPriceText.keyboardType = .numbersAndPunctuation
-        
         cancelButton.setBorder(UIColor(named: "ViewBorderThick")!)
-        placeButton.setBorder(UIColor(named: "TextGray")!)
+        searchButton.setBorder(UIColor(named: "TextGray")!)
+        
+        let user = User.user()
+        distanceLabel.text = "Radius of distance: \(user.distance) miles"
+        distanceSlider.value = Float(user.distance - 10) / Float(200 - 10)
     }
     
     private func hideContentViewWithCompletion(completion: ((Bool) -> Void)? = nil) {
@@ -120,40 +119,30 @@ class PlaceBidController: UIViewController {
         }
     }
     
-    private func validate() -> Bool {
-        var arrViews = [UIView]()
-        if let value = totalPriceText.text {
-            if value.isEmpty || Double(value) == nil {
-                arrViews.append(totalPriceView)
-            }
-        }
-        
-        if arrViews.count > 0 {
-            if let shaker = AFViewShaker(viewsArray: arrViews) {
-                shaker.shake()
-            }
-            return false
-        }
-        
-        return true
-    }
-    
     // MARK: - Action
     
-    @IBAction func onClickPlace(_ sender: Any) {
-        guard validate() else {
-            return
-        }
+    @IBAction func onClickSearch(_ sender: Any) {
+        // Miles
+        let value = Int(distanceSlider.value * (200 - 10) + 10)
         
-        let totalPrice = Double(totalPriceText.text!) ?? 0
+        var user = User.user()
+        user.distance = value
+        user.save(sync: true)
         
-        hideContentViewWithCompletion { finish in
+        hideContentViewWithCompletion { (finish) in
             self.dismiss(animated: true) {
-                if let onPlacePrices = self.onPlacePrices {
-                    onPlacePrices(totalPrice)
+                if let onSearch = self.onSearch {
+                    onSearch()
                 }
             }
         }
+    }
+    
+    @IBAction func onChangedDistance(_ sender: Any) {
+        // Miles
+        let value = Int(distanceSlider.value * (200 - 10) + 10)
+        
+        distanceLabel.text = "Radius of distance: \(value) miles"
     }
     
     @IBAction func onClickCancel(_ sender: Any) {
@@ -220,5 +209,4 @@ class PlaceBidController: UIViewController {
         }
     }
 
-    
 }

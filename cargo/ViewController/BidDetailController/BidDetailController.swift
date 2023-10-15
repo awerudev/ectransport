@@ -26,7 +26,6 @@ class BidDetailController: UIViewController {
     @IBOutlet weak var deliveryDateLabel: UILabel!        
     
     private var bidPrice: Double = 0
-    private var milePrice: Double = 0
     
     private var isMoreInfo = false
     
@@ -124,7 +123,6 @@ class BidDetailController: UIViewController {
             MBProgressHUD.hide(for: self.view, animated: true)
             if let bid = bid {
                 self.bidPrice = bid.totalPrice
-                self.milePrice = bid.pricePerMile
                 self.bidInfo = bid
                 
                 self.updateLayout()
@@ -139,7 +137,6 @@ class BidDetailController: UIViewController {
         
         var bid = loadInfo.toBidInfo()
         bid.totalPrice = bidPrice
-        bid.pricePerMile = milePrice
         self.bidInfo = bid
         
         MBProgressHUD.showAdded(to: view, animated: true)
@@ -173,9 +170,8 @@ class BidDetailController: UIViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "PlaceBidController") as? PlaceBidController else {
             return
         }
-        vc.onPlacePrices = { (total, mile) in
+        vc.onPlacePrices = { (total) in
             self.bidPrice = total
-            self.milePrice = mile
             
             self.tableView.reloadData()
             
@@ -192,7 +188,7 @@ class BidDetailController: UIViewController {
     }
     
     @IBAction func onClickCancelBid(_ sender: Any) {
-        if let bidInfo = bidInfo {
+        if let _ = bidInfo {
             Alert.showAlert(Constants.appName, message: "Are you sure that you want to cancel this bid?", from: self) { yesAction in
                 self.cancelBid()
             } negativeHandler: { noAction in
@@ -252,7 +248,7 @@ extension BidDetailController: UITableViewDelegate, UITableViewDataSource {
             cell.showLoadInfo(loadInfo)
         }
         
-        cell.showPriceInfo(bidPrice: bidPrice, milePrice: milePrice)
+        cell.showPriceInfo(bidPrice: bidPrice)
         
         return cell
     }

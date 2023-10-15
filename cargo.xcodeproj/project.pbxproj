@@ -48,6 +48,8 @@
 		18344B702ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */; };
 		18344B712ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */; };
 		18344B742ABA48A5006B8DB4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B732ABA48A5006B8DB4 /* IQKeyboardManagerSwift */; };
+		183C0D502AD79C230046EE04 /* MyAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C0D4F2AD79C230046EE04 /* MyAnnotationView.swift */; };
+		183C0D522AD7A2660046EE04 /* FilterDistanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C0D512AD7A2660046EE04 /* FilterDistanceController.swift */; };
 		184EA4D72AC2EB6C0054E9C0 /* LoadInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EA4D62AC2EB6C0054E9C0 /* LoadInfoController.swift */; };
 		185346032ABBF57E004AE37A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185346022ABBF57E004AE37A /* GradientView.swift */; };
 		186AADB72AC7D12E00881D20 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AADB62AC7D12E00881D20 /* LoadData.swift */; };
@@ -109,6 +111,8 @@
 		18344B5D2ABA3E0F006B8DB4 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		183C0D4F2AD79C230046EE04 /* MyAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnnotationView.swift; sourceTree = "<group>"; };
+		183C0D512AD7A2660046EE04 /* FilterDistanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDistanceController.swift; sourceTree = "<group>"; };
 		184EA4D62AC2EB6C0054E9C0 /* LoadInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadInfoController.swift; sourceTree = "<group>"; };
 		184EA4D82AC2EDF20054E9C0 /* cargo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cargo.entitlements; sourceTree = "<group>"; };
 		185346022ABBF57E004AE37A /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				182A630B2ABAA3D500DFE8F2 /* Constants.swift */,
+				1884CFD92ABA4A5400C5BB3B /* Extensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -294,9 +299,9 @@
 		185346012ABBF56F004AE37A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1884CFD92ABA4A5400C5BB3B /* Extensions.swift */,
 				185346022ABBF57E004AE37A /* GradientView.swift */,
 				1877F1632AC38D2D0029ACE8 /* Alert.swift */,
+				183C0D4F2AD79C230046EE04 /* MyAnnotationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 			children = (
 				182A63032ABA9FB700DFE8F2 /* BidsViewController.swift */,
 				18E3729E2ABD4430009971C4 /* BidTableCell.swift */,
+				183C0D512AD7A2660046EE04 /* FilterDistanceController.swift */,
 			);
 			path = BidsViewController;
 			sourceTree = "<group>";
@@ -542,10 +548,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183C0D522AD7A2660046EE04 /* FilterDistanceController.swift in Sources */,
 				18DA78132AC1304500719118 /* BidMoreInfoCell.swift in Sources */,
 				18344B4A2ABA3C04006B8DB4 /* LoginViewController.swift in Sources */,
 				182A63042ABA9FB700DFE8F2 /* BidsViewController.swift in Sources */,
 				18B25C102AC88254004E9A0D /* BidInfo.swift in Sources */,
+				183C0D502AD79C230046EE04 /* MyAnnotationView.swift in Sources */,
 				182A63062ABA9FC000DFE8F2 /* ChatsViewController.swift in Sources */,
 				18DA780E2AC127A000719118 /* ProfileLoadCell.swift in Sources */,
 				185346032ABBF57E004AE37A /* GradientView.swift in Sources */,

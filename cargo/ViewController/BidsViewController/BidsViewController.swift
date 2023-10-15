@@ -7,6 +7,7 @@
 
 import UIKit
 import GooglePlaces
+import MapKit
 
 class BidsViewController: UIViewController {
 
@@ -77,6 +78,12 @@ class BidsViewController: UIViewController {
         tableView.dataSource = self
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(onRefresh(_:)), for: .valueChanged)
+        
+        let user = User.user()
+        // By Default
+        addressText.text = user.address
+        pickupAddr = user.address
+        pickupCoordinate = CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude)
     }
     
     private func presentAddressAutoComplete() {
@@ -102,7 +109,29 @@ class BidsViewController: UIViewController {
         if lastLoadID == 0 {
             refreshControl.beginRefreshing()
         }
-        FirebaseService.getLoads(lastLoadID: lastLoadID) { items, error in
+        
+        var maxCoordinate: CLLocationCoordinate2D? = nil
+        var minCoordinate: CLLocationCoordinate2D? = nil
+        
+        let user = User.user()
+        if !pickupAddr.isEmpty {
+            // Get your current location (e.g., using Core Location)
+            let currentLocation = CLLocationCoordinate2D(latitude: pickupCoordinate.latitude, longitude: pickupCoordinate.longitude)
+            // Specify the radius (in meters) for the region you want to calculate
+            let radius: CLLocationDistance = Double(user.distance) * Constants.meterPerMile
+            // Calculate the maximum and minimum coordinates
+            let region = MKCoordinateRegion(center: currentLocation, latitudinalMeters: radius, longitudinalMeters: radius)
+
+            maxCoordinate = CLLocationCoordinate2D(latitude: currentLocation.latitude + region.span.latitudeDelta / 2, longitude: currentLocation.longitude + region.span.longitudeDelta / 2)
+            minCoordinate = CLLocationCoordinate2D(latitude: currentLocation.latitude - region.span.latitudeDelta / 2, longitude: currentLocation.longitude - region.span.longitudeDelta / 2)
+            print("Min: \(minCoordinate), Max: \(maxCoordinate)")
+        }
+        
+        FirebaseService.getLoads(
+            lastLoadID: lastLoadID,
+            minCoordinate: minCoordinate,
+            maxCoordinate: maxCoordinate
+        ) { items, error in
             self.refreshControl.endRefreshing()
             
             if self.lastLoadID == 0 {
@@ -123,6 +152,19 @@ class BidsViewController: UIViewController {
     
     @IBAction func onClickEditAddress(_ sender: Any) {
         presentAddressAutoComplete()
+    }
+    
+    @IBAction func onClickFilter(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "FilterDistanceController") as? FilterDistanceController else {
+            return
+        }
+        vc.onSearch = {
+            self.getLoads()
+        }
+        
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true)
     }
     
     @objc
@@ -150,6 +192,8 @@ extension BidsViewController: GMSAutocompleteViewControllerDelegate {
         
         pickupAddr = place.formattedAddress ?? ""
         pickupCoordinate = place.coordinate        
+        
+        getLoads()
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {

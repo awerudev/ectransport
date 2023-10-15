@@ -10,9 +10,7 @@ import UIKit
 class BidMoreInfoCell: UITableViewCell {
 
     @IBOutlet weak var yourBidView: UIView!
-    @IBOutlet weak var perMileView: UIView!
     @IBOutlet weak var yourBidLabel: UILabel!
-    @IBOutlet weak var perMileLabel: UILabel!
     @IBOutlet weak var expandButton: UIButton!
     @IBOutlet weak var infoView: UIView!
     
@@ -30,7 +28,6 @@ class BidMoreInfoCell: UITableViewCell {
         // Initialization code
         
         yourBidView.setBorder(UIColor(named: "ViewBorder")!, cornerRadius: Constants.cornerRadius1)
-        perMileView.setBorder(UIColor(named: "ViewBorder")!, cornerRadius: Constants.cornerRadius1)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -49,21 +46,14 @@ class BidMoreInfoCell: UITableViewCell {
         expireAtLabel.text = loadData.expireAt.isEmpty ? "-": loadData.expireAt
     }
     
-    func showPriceInfo(bidPrice: Double, milePrice: Double) {
+    func showPriceInfo(bidPrice: Double) {
         yourBidLabel.text = String(format: "$%.2f", bidPrice)
-        perMileLabel.text = String(format: "$%.2f", milePrice)
         
         if bidPrice < 0.01 {
             yourBidLabel.textColor = UIColor(named: "TextDark")
         }
         else {
             yourBidLabel.textColor = UIColor(named: "TextGreenLight")
-        }
-        if milePrice < 0.01 {
-            perMileLabel.textColor = UIColor(named: "TextDark")
-        }
-        else {
-            perMileLabel.textColor = UIColor(named: "TextGreenLight")
         }
     }    
     

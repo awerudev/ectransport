@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
@@ -124,17 +125,29 @@ class FirebaseService: NSObject {
     }
     
     open class func getLastLoad(completion: ((LoadData?, Error?) -> Void)?) {
-        loads.order(by: "addedAt", descending: true).limit(to: 1).getDocuments { querySnapshot, error in
+        loads.order(by: "addedAt", descending: true).limit(to: 100).getDocuments { querySnapshot, error in
             if let error = error {
                 print("=========== getLastLoad Error: \(error.localizedDescription)")
                 completion?(nil, error)
                 return
             }
             if let snapshot = querySnapshot {
+                let user = User.user()
+                let userLocation = CLLocation(latitude: user.latitude, longitude: user.longitude)
+                var minDistance: Double = 100000000
+                var nearestLoad = LoadData()
+                
                 for doc in snapshot.documents {
-                    completion?(LoadData(doc.data()), nil)
-                    return
+                    let loadData = LoadData(doc.data())
+                    let loadLocation = CLLocation(latitude: loadData.pickupAt.latitude, longitude: loadData.pickupAt.longitude)
+                    let distance = userLocation.distance(from: loadLocation)
+                    
+                    if distance < minDistance {
+                        minDistance = distance
+                        nearestLoad = loadData
+                    }
                 }
+                completion?(nearestLoad, nil)
             }
         }
     }
@@ -189,13 +202,46 @@ class FirebaseService: NSObject {
         }
     }
     
-    open class func getLoads(lastLoadID: Int, completion: (([LoadData], Error?) -> Void)?) {
-        var query = loads.order(by: "addedAt", descending: true).limit(to: 20)
+    open class func getLoads(
+        lastLoadID: Int,
+        minCoordinate: CLLocationCoordinate2D?,
+        maxCoordinate: CLLocationCoordinate2D?,
+        completion: (([LoadData], Error?) -> Void)?
+    ) {
+        var query = loads.order(by: "addedAt", descending: true).limit(to: 100)
         if lastLoadID > 0 {
             query = loads.whereField("id", isLessThan: lastLoadID)
                 .order(by: "id", descending: true)
-                .limit(to: 20)
+                .limit(to: 100)
         }
+        if let _ = minCoordinate, let _ = maxCoordinate {
+//            query = loads.whereField("id", isLessThan: lastLoadID)
+//                .whereField("pickupAt.latitude", isGreaterThan: min.latitude)
+//                .whereField("pickupAt.longitude", isGreaterThan: min.longitude)
+//                .whereField("pickupAt.latitude", isLessThan: max.latitude)
+//                .whereField("pickupAt.longitude", isLessThan: max.longitude)
+//                .order(by: "id", descending: true)
+//                .limit(to: 100)
+//            query = loads.whereFilter(Filter.andFilter([
+//                Filter.whereField("id", isLessThan: lastLoadID),
+//                Filter.whereField("pickupAt.latitude", isGreaterThan: min.latitude),
+//                Filter.whereField("pickupAt.longitude", isGreaterThan: min.longitude),
+//                Filter.whereField("pickupAt.latitude", isLessThan: max.latitude),
+//                Filter.whereField("pickupAt.longitude", isLessThan: max.longitude)
+//            ]))
+//            .order(by: "id", descending: true)
+//            .limit(to: 100)
+            
+            if lastLoadID > 0 {
+                query = loads.whereField("id", isLessThan: lastLoadID)
+                    .order(by: "id", descending: true)
+                    .limit(to: 10000)
+            }
+            else {
+                query = loads.order(by: "id", descending: true).limit(to: 10000)
+            }
+        }
+        
         query.getDocuments { querySnapshot, error in
             if let error = error {
                 print("======== getLoads Error: \(error.localizedDescription)")
@@ -207,6 +253,15 @@ class FirebaseService: NSObject {
                 for doc in querySnapshot.documents {
                     items.append(LoadData(doc.data()))
                 }
+                if let min = minCoordinate, let max = maxCoordinate {
+                    items = items.filter { item in
+                        item.pickupAt.latitude > min.latitude
+                        && item.pickupAt.longitude > min.longitude
+                        && item.deliverTo.latitude < max.latitude
+                        && item.deliverTo.longitude < max.longitude
+                    }
+                }
+                
                 completion?(items, nil)
             }
         }

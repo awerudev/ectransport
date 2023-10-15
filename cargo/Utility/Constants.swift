@@ -13,6 +13,8 @@ class Constants: NSObject {
     
     static let googleAPIKey = "AIzaSyCc60YVL8fhVeQk013kntclJiBCZ53xKkg"
     
+    static let meterPerMile: Double = 1609.34
+    
     // MARK: - UI Layout
     class var screenHei: CGFloat {
         return UIScreen.main.bounds.size.width < UIScreen.main.bounds.size.height ? UIScreen.main.bounds.size.height: UIScreen.main.bounds.size.width

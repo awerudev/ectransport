@@ -112,17 +112,29 @@ class HomeViewController: UIViewController {
         guard let lastLoad = lastLoad else {
             return
         }
+        // Remove Old Annotations
+        for annotation in mapView.annotations {
+            mapView.removeAnnotation(annotation)
+        }
         
-        let pickupAt = MKPointAnnotation()
+        let user = User.user()
+        let userCoordinate = CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude)
+        let userPoint = MKMapPoint(userCoordinate)
+        let userAnnotation = MKPointAnnotation()
+        userAnnotation.title = user.address
+        userAnnotation.coordinate = userCoordinate
+        mapView.addAnnotation(userAnnotation)
+        
         let pickupCoordinate = CLLocationCoordinate2D(latitude: lastLoad.pickupAt.latitude, longitude: lastLoad.pickupAt.longitude)
         let pickupPoint = MKMapPoint(pickupCoordinate)
+        let pickupAt = MKPointAnnotation()
         pickupAt.title = lastLoad.pickupAt.formattedAddress
         pickupAt.coordinate = pickupCoordinate
         mapView.addAnnotation(pickupAt)
         
-        let deliverTo = MKPointAnnotation()
         let deliverToCoordinate = CLLocationCoordinate2D(latitude: lastLoad.deliverTo.latitude, longitude: lastLoad.deliverTo.longitude)
         let deliverToPoint = MKMapPoint(deliverToCoordinate)
+        let deliverTo = MKPointAnnotation()
         deliverTo.title = lastLoad.deliverTo.formattedAddress
         deliverTo.coordinate = deliverToCoordinate
         mapView.addAnnotation(deliverTo)
@@ -241,6 +253,15 @@ extension HomeViewController: MKMapViewDelegate {
         return renderer
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "something")
+        let user = User.user()
+        if user.address == annotation.title {
+            annotationView.markerTintColor = .green //custom colors also work, additionally to these default ones
+        }
+        return annotationView
+    }
+    
 }
 
 
@@ -274,6 +295,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.addrCoordiate = CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude)
             cell.onAvailabilityChange = {
                 self.tableView.reloadData()
+            }
+            cell.onLocationChange = {
+                self.getLastLoad()
             }
             
             if user.availability == .notAvailable {

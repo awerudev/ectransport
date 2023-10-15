@@ -71,6 +71,9 @@ struct User: Codable {
     var longitude: CLLocationDegrees = 0
     var availability: UserAvailability = .notAvailable
     
+    // Filter between 10 and 200
+    var distance: Int = 200 // Miles 1 mile = 1609.34 meter
+    
     init() {
         
     }
@@ -109,6 +112,10 @@ struct User: Codable {
         if let value = dic["available"] as? Int, let enumValue = UserAvailability(rawValue: value) {
             availability = enumValue
         }
+        
+        if let value = dic["distance"] as? Int {
+            distance = value
+        }
     }
     
     func statusValue() -> ProfileStatus {
@@ -127,7 +134,8 @@ struct User: Codable {
             "address"  : address,
             "latitude" : latitude,
             "longitude": longitude,
-            "available": availability.rawValue
+            "available": availability.rawValue,
+            "distance" : distance
         ]
     }
     

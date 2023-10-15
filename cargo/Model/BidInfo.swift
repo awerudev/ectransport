@@ -21,7 +21,6 @@ struct BidInfo: Codable {
     var expireAt = ""
     
     var totalPrice: Double = 0
-    var pricePerMile: Double = 0
     
     init() {
         
@@ -78,9 +77,6 @@ struct BidInfo: Codable {
             totalPrice = value
         }
         
-        if let value = dic["pricePerMile"] as? Double {
-            pricePerMile = value
-        }
     }
     
     func jsonObj() -> [String: Any] {
@@ -96,7 +92,6 @@ struct BidInfo: Codable {
             "dims"         : dims,
             "expireAt"     : expireAt,
             "totalPrice"   : totalPrice,
-            "pricePerMile" : pricePerMile
         ]
     }
     

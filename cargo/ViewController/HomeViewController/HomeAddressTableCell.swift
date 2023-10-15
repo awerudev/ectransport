@@ -13,6 +13,7 @@ class HomeAddressTableCell: UITableViewCell {
     var parentViewController: UIViewController? = nil
     var addrCoordiate: CLLocationCoordinate2D = CLLocationCoordinate2D()
     var onAvailabilityChange: (() -> Void)? = nil
+    var onLocationChange: (() -> Void)? = nil
     
     @IBOutlet weak var addressView: UIView!
     @IBOutlet weak var addressInputView: UIView!
@@ -80,14 +81,7 @@ class HomeAddressTableCell: UITableViewCell {
             user.availability = .notAvailable
         }
         else if user.availability == .notAvailable {
-            guard let addr = addressText.text, !addr.isEmpty else {
-                return
-            }
-            
             user.availability = .available
-            user.address = addr
-            user.latitude = addrCoordiate.latitude
-            user.longitude = addrCoordiate.longitude
         }
         user.save(sync: true)
         
@@ -105,6 +99,12 @@ extension HomeAddressTableCell: GMSAutocompleteViewControllerDelegate {
         
         addressText.text = place.formattedAddress
         addrCoordiate = place.coordinate
+        
+        var user = User.user()
+        user.address = place.formattedAddress ?? ""
+        user.latitude = addrCoordiate.latitude
+        user.longitude = addrCoordiate.longitude
+        user.save(sync: true)
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
