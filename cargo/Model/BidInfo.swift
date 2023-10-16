@@ -21,6 +21,7 @@ struct BidInfo: Codable {
     var expireAt = ""
     
     var totalPrice: Double = 0
+    var createdAt: TimeInterval = Date().timeIntervalSince1970
     
     init() {
         
@@ -77,6 +78,9 @@ struct BidInfo: Codable {
             totalPrice = value
         }
         
+        if let value = dic["createdAt"] as? TimeInterval {
+            createdAt = value
+        }
     }
     
     func jsonObj() -> [String: Any] {
@@ -92,6 +96,7 @@ struct BidInfo: Codable {
             "dims"         : dims,
             "expireAt"     : expireAt,
             "totalPrice"   : totalPrice,
+            "createdAt"    : createdAt
         ]
     }
     

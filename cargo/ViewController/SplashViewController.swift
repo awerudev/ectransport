@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import MBProgressHUD
 
 class SplashViewController: UIViewController {
 
@@ -14,6 +15,40 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user == nil {
+                // Logged out
+                print("================== user logged out")
+            }
+            else { // Logged in
+                print("================== user logged in")
+            }
+        }
+        
+        FirebaseService.listenUserInfo { profileStatus, error in
+            if UserDefaults.standard.bool(forKey: Constants.prefFirstLaunched) {
+                UserDefaults.standard.set(false, forKey: Constants.prefFirstLaunched)
+                return
+            }
+            
+            if let error = error {
+                print("\(error.localizedDescription)")
+            }
+            if let status = profileStatus {
+                if status == .approved {
+                    DispatchQueue.main.async {
+                        self.presentMainTab()
+                    }
+                }
+                else if status == .blocked || status == .deleted {
+                    FirebaseService.logout()
+                    DispatchQueue.main.async {
+                        self.presentLogin()
+                    }
+                }
+            }
+        }
         
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.notifyPresentDashboard), object: nil, queue: OperationQueue.main) { notification in
             self.presentMainTab()
@@ -49,9 +84,37 @@ class SplashViewController: UIViewController {
     @objc
     private func presentNext() {
         if FirebaseService.isLoggedIn {
-            FirebaseService.getUserInfo()
-            
-            presentMainTab()
+            MBProgressHUD.showAdded(to: view, animated: true)
+            FirebaseService.getUserInfo { user in
+                MBProgressHUD.hide(for: self.view, animated: true)
+                if user.statusValue() == .approved {
+                    self.presentMainTab()
+                }
+                else {
+                    var errMsg = "Something went wrong.\nPlease contact our administrator!"
+                    if user.statusValue() == .blocked {
+                        errMsg = "Your account has been blocked.\n\nWe've detected suspicious activity on your account. Please contact our administrator."
+                    }
+                    else if user.statusValue() == .pending {
+                        errMsg = "Please wait while we approve your registration.\n\nThanks so much!"
+                    }
+                    else if user.statusValue() == .blocked {
+                        errMsg = "Your account has been deleted. Please create a new one."
+                    }
+                    
+                    Alert.showAlert(Constants.appName, message: errMsg, from: self) { action in
+                        if user.statusValue() == .pending {
+                            // Wait until approved
+                        }
+                        else if user.statusValue() == .deleted || user.statusValue() == .blocked {
+                            FirebaseService.logout()
+                            DispatchQueue.main.async {
+                                self.presentLogin()
+                            }
+                        }
+                    }
+                }
+            }
         }
         else {
             presentLogin()

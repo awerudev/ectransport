@@ -76,6 +76,27 @@ extension UIImage {
     
 }
 
+extension NSMutableAttributedString {
+    
+    func append(_ content: String, font: UIFont, color: UIColor = UIColor(named: "White")!) {
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: color,
+        ]
+        append(NSMutableAttributedString(string: content, attributes: attributes))
+    }
+    
+    func appendUnderline(_ content: String, font: UIFont, color: UIColor = UIColor(named: "White")!) {
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: color,
+            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        append(NSMutableAttributedString(string: content, attributes: attributes))
+    }
+    
+}
+
 extension UITextField {
     
     func setPlaceholder(_ placeholder: String, color: UIColor = UIColor(named: "TextLightGray")!) {

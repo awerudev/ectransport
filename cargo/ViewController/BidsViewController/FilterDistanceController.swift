@@ -69,8 +69,28 @@ class FilterDistanceController: UIViewController {
         searchButton.setBorder(UIColor(named: "TextGray")!)
         
         let user = User.user()
-        distanceLabel.text = "Radius of distance: \(user.distance) miles"
+        updateDistanceLabel(user.distance)
         distanceSlider.value = Float(user.distance - 10) / Float(200 - 10)
+    }
+    
+    private func updateDistanceLabel(_ distance: Int) {
+        let attrString = NSMutableAttributedString()
+        attrString.append(
+            "Radius of distance: ",
+            font: UIFont(name: "Montserrat-SemiBold", size: 13)!,
+            color: UIColor(named: "TextLabel")!
+        )
+        attrString.append(
+            "\(distance)",
+            font: UIFont(name: "Montserrat-Bold", size: 24)!,
+            color: UIColor(named: "TextLabel")!
+        )
+        attrString.append(
+            " miles",
+            font: UIFont(name: "Montserrat-SemiBold", size: 13)!,
+            color: UIColor(named: "TextLabel")!
+        )
+        distanceLabel.attributedText = attrString
     }
     
     private func hideContentViewWithCompletion(completion: ((Bool) -> Void)? = nil) {
@@ -142,7 +162,7 @@ class FilterDistanceController: UIViewController {
         // Miles
         let value = Int(distanceSlider.value * (200 - 10) + 10)
         
-        distanceLabel.text = "Radius of distance: \(value) miles"
+        updateDistanceLabel(value)
     }
     
     @IBAction func onClickCancel(_ sender: Any) {

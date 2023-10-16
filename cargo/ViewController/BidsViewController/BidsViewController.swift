@@ -124,18 +124,21 @@ class BidsViewController: UIViewController {
 
             maxCoordinate = CLLocationCoordinate2D(latitude: currentLocation.latitude + region.span.latitudeDelta / 2, longitude: currentLocation.longitude + region.span.longitudeDelta / 2)
             minCoordinate = CLLocationCoordinate2D(latitude: currentLocation.latitude - region.span.latitudeDelta / 2, longitude: currentLocation.longitude - region.span.longitudeDelta / 2)
-            print("Min: \(minCoordinate), Max: \(maxCoordinate)")
+            print("============ Min: \(minCoordinate), Max: \(maxCoordinate)")
         }
         
         FirebaseService.getLoads(
             lastLoadID: lastLoadID,
             minCoordinate: minCoordinate,
             maxCoordinate: maxCoordinate
-        ) { items, error in
+        ) { (items, lastLoadID, error) in
             self.refreshControl.endRefreshing()
             
             if self.lastLoadID == 0 {
                 self.loadList = []
+            }
+            if let value = lastLoadID {
+                self.lastLoadID = value
             }
             self.loadList.append(contentsOf: items)
             self.tableView.reloadData()
@@ -159,6 +162,7 @@ class BidsViewController: UIViewController {
             return
         }
         vc.onSearch = {
+            self.lastLoadID = 0
             self.getLoads()
         }
         
@@ -253,7 +257,6 @@ extension BidsViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.row == loadList.count - 1 {
             print("//////// lastItemReached...")
-            lastLoadID = loadList.last?.id ?? 0
             getLoads()
         }
         

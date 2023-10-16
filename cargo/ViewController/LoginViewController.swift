@@ -106,7 +106,31 @@ class LoginViewController: UIViewController {
             FirebaseService.getUserInfo { user in
                 MBProgressHUD.hide(for: self.view, animated: true)
                 
-                NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyPresentDashboard), object: nil)
+                if user.statusValue() == .approved {
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyPresentDashboard), object: nil)
+                }
+                else {
+                    var errMsg = "Something went wrong.\nPlease contact our administrator!"
+                    if user.statusValue() == .blocked {
+                        errMsg = "Your account has been blocked.\n\nWe've detected suspicious activity on your account. Please contact our administrator."
+                    }
+                    else if user.statusValue() == .pending {
+                        errMsg = "Please wait while we approve your registration.\n\nThanks so much!"
+                    }
+                    else if user.statusValue() == .blocked {
+                        errMsg = "Your account has been deleted. Please create a new one."
+                    }
+                    
+                    Alert.showAlert(Constants.appName, message: errMsg, from: self) { action in
+                        if user.statusValue() == .pending {
+                            // Wait until approved
+                            self.dismiss(animated: true)
+                        }
+                        else if user.statusValue() == .deleted || user.statusValue() == .blocked {
+                            FirebaseService.logout()                            
+                        }
+                    }
+                }
             }
         }
     }

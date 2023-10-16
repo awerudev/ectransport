@@ -99,13 +99,13 @@ class BidDetailController: UIViewController {
     private func updateLayout() {
         DispatchQueue.main.async {
             if self.bidInfo != nil {
-                self.placeBidButton.isEnabled = false
+//                self.placeBidButton.isEnabled = false
 //                self.placeBidButton.setTitle("Already placed", for: .normal)
                 
                 self.tableView.reloadData()
             }
             else {
-                self.placeBidButton.isEnabled = true
+//                self.placeBidButton.isEnabled = true
 //                self.placeBidButton.setTitle("Place bid", for: .normal)
                 
                 self.tableView.reloadData()
@@ -137,13 +137,16 @@ class BidDetailController: UIViewController {
         
         var bid = loadInfo.toBidInfo()
         bid.totalPrice = bidPrice
-        self.bidInfo = bid
         
         MBProgressHUD.showAdded(to: view, animated: true)
         FirebaseService.addBid(bid) { error in
             MBProgressHUD.hide(for: self.view, animated: true)
             if error == nil {
+                Alert.showAlert(Constants.appName, message: "Your Bid Has Been Placed Please Hold for 20 Minutes.", from: self) { action in
+                    
+                }
                 // Success
+                self.bidInfo = bid
                 self.updateLayout()
             }
         }
@@ -167,6 +170,11 @@ class BidDetailController: UIViewController {
     // MARK: - Action
     
     @IBAction func onClickPlaceBid(_ sender: UIButton) {
+        if self.bidInfo != nil {
+            Alert.showAlert(Constants.appName, message: "You already placed bid for this load!", from: self, handler: nil)
+            return
+        }
+        
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "PlaceBidController") as? PlaceBidController else {
             return
         }

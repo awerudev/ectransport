@@ -82,6 +82,23 @@ class FirebaseService: NSObject {
         }
     }
     
+    open class func listenUserInfo(completion: ((ProfileStatus?, Error?) -> Void)?) {
+        guard let currentUserId = currentUserId else {
+            return
+        }
+        
+        users.document(currentUserId).addSnapshotListener { docSnapshot, error in
+            if let error = error {
+                completion?(nil, error)
+                return
+            }
+            if let snapshot = docSnapshot, let data = snapshot.data() {
+                let user = User(data)
+                completion?(user.statusValue(), nil)
+            }
+        }
+    }
+    
     open class func saveUserInfo(user: User, completion: ((Error?) -> Void)?) {
         users.document(user.id).setData(user.jsonObj()) { error in
             completion?(error)
@@ -125,7 +142,7 @@ class FirebaseService: NSObject {
     }
     
     open class func getLastLoad(completion: ((LoadData?, Error?) -> Void)?) {
-        loads.order(by: "addedAt", descending: true).limit(to: 100).getDocuments { querySnapshot, error in
+        loads.order(by: "addedAt", descending: true).limit(to: 1000).getDocuments { querySnapshot, error in
             if let error = error {
                 print("=========== getLastLoad Error: \(error.localizedDescription)")
                 completion?(nil, error)
@@ -206,7 +223,7 @@ class FirebaseService: NSObject {
         lastLoadID: Int,
         minCoordinate: CLLocationCoordinate2D?,
         maxCoordinate: CLLocationCoordinate2D?,
-        completion: (([LoadData], Error?) -> Void)?
+        completion: (([LoadData], Int?, Error?) -> Void)?
     ) {
         var query = loads.order(by: "addedAt", descending: true).limit(to: 100)
         if lastLoadID > 0 {
@@ -245,7 +262,7 @@ class FirebaseService: NSObject {
         query.getDocuments { querySnapshot, error in
             if let error = error {
                 print("======== getLoads Error: \(error.localizedDescription)")
-                completion?([], error)
+                completion?([], nil, error)
                 return
             }
             if let querySnapshot = querySnapshot {
@@ -262,7 +279,12 @@ class FirebaseService: NSObject {
                     }
                 }
                 
-                completion?(items, nil)
+                var lastLoad: LoadData? = nil
+                if let value = querySnapshot.documents.last {
+                    lastLoad = LoadData(value.data())
+                }
+                
+                completion?(items, lastLoad?.id, nil)
             }
         }
     }

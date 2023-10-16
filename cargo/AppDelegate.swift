@@ -34,6 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         window?.makeKeyAndVisible()
         
+//        for family in UIFont.familyNames {
+//            print("================ \(family)")
+//            for font in UIFont.fontNames(forFamilyName: family) {
+//                print("\(font)")
+//            }
+//        }
+        
+        UserDefaults.standard.set(true, forKey: Constants.prefFirstLaunched)
+        
         return true
     }
 
