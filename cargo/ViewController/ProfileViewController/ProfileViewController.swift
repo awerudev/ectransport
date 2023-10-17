@@ -122,7 +122,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func getMyBids() {
-        FirebaseService.getBids { items, error in
+        FirebaseService.getLastBids { items, error in
             self.myBids = []
             self.myBids.append(contentsOf: items)
             self.tableView.reloadData()
@@ -147,6 +147,13 @@ class ProfileViewController: UIViewController {
         } negativeHandler: { noAction in
             
         }
+    }
+    
+    @IBAction func onClickViewAll(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ActiveLoadController") as? ActiveLoadController else {
+            return
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

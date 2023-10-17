@@ -11,6 +11,9 @@ import MBProgressHUD
 
 class SplashViewController: UIViewController {
 
+    
+    // MARK: - Method
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,36 +29,17 @@ class SplashViewController: UIViewController {
             }
         }
         
-        FirebaseService.listenUserInfo { profileStatus, error in
-            if UserDefaults.standard.bool(forKey: Constants.prefFirstLaunched) {
-                UserDefaults.standard.set(false, forKey: Constants.prefFirstLaunched)
-                return
-            }
-            
-            if let error = error {
-                print("\(error.localizedDescription)")
-            }
-            if let status = profileStatus {
-                if status == .approved {
-                    DispatchQueue.main.async {
-                        self.presentMainTab()
-                    }
-                }
-                else if status == .blocked || status == .deleted {
-                    FirebaseService.logout()
-                    DispatchQueue.main.async {
-                        self.presentLogin()
-                    }
-                }
-            }
-        }
-        
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.notifyPresentDashboard), object: nil, queue: OperationQueue.main) { notification in
             self.presentMainTab()
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.notifyPresentLogin), object: nil, queue: OperationQueue.main) { notification in
             self.presentLogin()
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.notifyListenUserInfo), object: nil, queue: OperationQueue.main) { notification in
+            let screen = notification.userInfo?["screen"] as? String ?? ""
+            self.listenUserInfo(screen)
         }
     }
     
@@ -81,6 +65,31 @@ class SplashViewController: UIViewController {
     
     // MARK: - My Method
     
+    private func listenUserInfo(_ screen: String) {
+        FirebaseService.listenUserInfo { profileStatus, error in
+            print("=========================== FirebaseService.listenUserInfo")
+            if let error = error {
+                print("\(error.localizedDescription)")
+            }
+            if let status = profileStatus {
+                if status == .approved {
+                    if screen == "main" {
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.presentMainTab()
+                    }
+                }
+                else if status == .blocked || status == .deleted {
+                    FirebaseService.logout()
+                    DispatchQueue.main.async {
+                        self.presentLogin()
+                    }
+                }
+            }
+        }
+    }
+    
     @objc
     private func presentNext() {
         if FirebaseService.isLoggedIn {
@@ -105,6 +114,7 @@ class SplashViewController: UIViewController {
                     Alert.showAlert(Constants.appName, message: errMsg, from: self) { action in
                         if user.statusValue() == .pending {
                             // Wait until approved
+                            self.listenUserInfo("")
                         }
                         else if user.statusValue() == .deleted || user.statusValue() == .blocked {
                             FirebaseService.logout()
@@ -139,6 +149,7 @@ class SplashViewController: UIViewController {
     }
     
     private func presentMainTab() {
+        print("========================== presentMainTab")
         if let presented = self.presentedViewController {
             presented.dismiss(animated: true) {
                 self.presentMainTab()

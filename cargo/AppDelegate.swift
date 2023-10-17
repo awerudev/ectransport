@@ -40,9 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                print("\(font)")
 //            }
 //        }
-        
-        UserDefaults.standard.set(true, forKey: Constants.prefFirstLaunched)
-        
+                
         return true
     }
 

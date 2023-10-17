@@ -48,8 +48,11 @@
 		18344B702ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */; };
 		18344B712ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */; };
 		18344B742ABA48A5006B8DB4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 18344B732ABA48A5006B8DB4 /* IQKeyboardManagerSwift */; };
+		1836DEAB2ADE362D001E214F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1836DEAA2ADE362D001E214F /* State.swift */; };
 		183C0D502AD79C230046EE04 /* MyAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C0D4F2AD79C230046EE04 /* MyAnnotationView.swift */; };
 		183C0D522AD7A2660046EE04 /* FilterDistanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C0D512AD7A2660046EE04 /* FilterDistanceController.swift */; };
+		18499F732ADCE72A000E1966 /* ActiveLoadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18499F722ADCE72A000E1966 /* ActiveLoadController.swift */; };
+		18499F752ADCE825000E1966 /* ActiveLoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18499F742ADCE825000E1966 /* ActiveLoadCell.swift */; };
 		184EA4D72AC2EB6C0054E9C0 /* LoadInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EA4D62AC2EB6C0054E9C0 /* LoadInfoController.swift */; };
 		185346032ABBF57E004AE37A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185346022ABBF57E004AE37A /* GradientView.swift */; };
 		186AADB72AC7D12E00881D20 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AADB62AC7D12E00881D20 /* LoadData.swift */; };
@@ -111,8 +114,11 @@
 		18344B5D2ABA3E0F006B8DB4 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		18344B5E2ABA3E0F006B8DB4 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		1836DEAA2ADE362D001E214F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		183C0D4F2AD79C230046EE04 /* MyAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnnotationView.swift; sourceTree = "<group>"; };
 		183C0D512AD7A2660046EE04 /* FilterDistanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDistanceController.swift; sourceTree = "<group>"; };
+		18499F722ADCE72A000E1966 /* ActiveLoadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLoadController.swift; sourceTree = "<group>"; };
+		18499F742ADCE825000E1966 /* ActiveLoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLoadCell.swift; sourceTree = "<group>"; };
 		184EA4D62AC2EB6C0054E9C0 /* LoadInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadInfoController.swift; sourceTree = "<group>"; };
 		184EA4D82AC2EDF20054E9C0 /* cargo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cargo.entitlements; sourceTree = "<group>"; };
 		185346022ABBF57E004AE37A /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -215,6 +221,7 @@
 				18AFB28E2AC3E10E003D6D5D /* EditProfileController */,
 				18DA780F2AC129EF00719118 /* BidDetailController */,
 				184EA4D52AC2EB520054E9C0 /* LoadInfoController */,
+				18499F712ADCE70D000E1966 /* ActiveLoadController */,
 				1877F1612AC36B870029ACE8 /* ArriveConfirmController.swift */,
 			);
 			path = ViewController;
@@ -226,6 +233,7 @@
 				1877F1652AC38E1E0029ACE8 /* User.swift */,
 				186AADB62AC7D12E00881D20 /* LoadData.swift */,
 				18B25C0F2AC88254004E9A0D /* BidInfo.swift */,
+				1836DEAA2ADE362D001E214F /* State.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +294,15 @@
 				18344B5F2ABA3E0F006B8DB4 /* Montserrat-ExtraBoldItalic.ttf */,
 			);
 			path = Montserrat;
+			sourceTree = "<group>";
+		};
+		18499F712ADCE70D000E1966 /* ActiveLoadController */ = {
+			isa = PBXGroup;
+			children = (
+				18499F722ADCE72A000E1966 /* ActiveLoadController.swift */,
+				18499F742ADCE825000E1966 /* ActiveLoadCell.swift */,
+			);
+			path = ActiveLoadController;
 			sourceTree = "<group>";
 		};
 		184EA4D52AC2EB520054E9C0 /* LoadInfoController */ = {
@@ -551,7 +568,10 @@
 				183C0D522AD7A2660046EE04 /* FilterDistanceController.swift in Sources */,
 				18DA78132AC1304500719118 /* BidMoreInfoCell.swift in Sources */,
 				18344B4A2ABA3C04006B8DB4 /* LoginViewController.swift in Sources */,
+				18499F752ADCE825000E1966 /* ActiveLoadCell.swift in Sources */,
+				18499F732ADCE72A000E1966 /* ActiveLoadController.swift in Sources */,
 				182A63042ABA9FB700DFE8F2 /* BidsViewController.swift in Sources */,
+				1836DEAB2ADE362D001E214F /* State.swift in Sources */,
 				18B25C102AC88254004E9A0D /* BidInfo.swift in Sources */,
 				183C0D502AD79C230046EE04 /* MyAnnotationView.swift in Sources */,
 				182A63062ABA9FC000DFE8F2 /* ChatsViewController.swift in Sources */,
@@ -729,7 +749,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = cargo/cargo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = H56XXGRY7F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cargo/Info.plist;
@@ -763,7 +783,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = cargo/cargo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = H56XXGRY7F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cargo/Info.plist;

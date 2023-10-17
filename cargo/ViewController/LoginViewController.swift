@@ -124,6 +124,7 @@ class LoginViewController: UIViewController {
                     Alert.showAlert(Constants.appName, message: errMsg, from: self) { action in
                         if user.statusValue() == .pending {
                             // Wait until approved
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyListenUserInfo), object: nil, userInfo: ["screen": ""])
                             self.dismiss(animated: true)
                         }
                         else if user.statusValue() == .deleted || user.statusValue() == .blocked {

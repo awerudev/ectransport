@@ -54,7 +54,6 @@ class Constants: NSObject {
     
     // MARK: - Standard UserDefault
     
-    static let prefFirstLaunched = "first_launched"
     static let prefCurrentUser = "current_user"
     
     // MARK: - Notification Center
@@ -63,5 +62,6 @@ class Constants: NSObject {
     static let notifyPresentLogin = "present_login"
     static let notifyProfileUpdated = "profile_updated"
     static let notifyPresentBids = "present_bids"
+    static let notifyListenUserInfo = "listen_user_info"
 
 }

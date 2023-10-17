@@ -107,3 +107,33 @@ extension UITextField {
     }
     
 }
+
+extension DateFormatter {
+    /// yyyy-MM-dd
+    static var dateFormat1: DateFormatter {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "yyyy-MM-dd"
+        return dateformat
+    }
+    
+    /// HH:mm
+    static var dateFormat2: DateFormatter {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "HH:mm"
+        return dateformat
+    }
+    
+    /// MMM dd, yyyy
+    static var dateFormat3: DateFormatter {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "MMM dd, yyyy"
+        return dateformat
+    }
+    
+    /// MM/dd/yyyy HH:mm
+    static var dateFormat4: DateFormatter {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "MM/dd/yyyy HH:mm"
+        return dateformat
+    }
+}

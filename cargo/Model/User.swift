@@ -32,6 +32,12 @@ struct VehicleDimension: Codable {
         
     }
     
+    init(length: Double, width: Double, height: Double) {
+        self.length = length
+        self.width = width
+        self.height = height
+    }
+    
     init(_ dic: [String: Any]) {
         if let value = dic["length"] as? Double {
             length = value
@@ -58,6 +64,7 @@ struct VehicleDimension: Codable {
 struct User: Codable {
     
     var id = ""
+    var uid: Int = 0
     var name = ""
     var email = ""
     var password = ""
@@ -81,6 +88,9 @@ struct User: Codable {
     init(_ dic: [String: Any]) {
         if let value = dic["id"] as? String {
             id = value
+        }
+        if let value = dic["uid"] as? Int {
+            uid = value
         }
         if let value = dic["name"] as? String {
             name = value
@@ -124,7 +134,8 @@ struct User: Codable {
     
     func jsonObj() -> [String: Any] {
         return [
-            "id"       : id,
+            "id"       : id, // Unique identifier assigned by Firebase
+            "uid"      : uid, // Unique Number assigned by System
             "name"     : name,
             "email"    : email,
             "phone"    : phone,

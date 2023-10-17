@@ -10,21 +10,30 @@ import AFViewShaker
 
 class PlaceBidController: UIViewController {
     
-    var onPlacePrices: ((Double) -> Void)?
+    var onPlacePrices: ((Double, VehicleDimension, Date) -> Void)?
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var totalPriceView: UIView!
     @IBOutlet weak var totalPriceText: UITextField!
+    @IBOutlet weak var etaView: UIView!
+    @IBOutlet weak var etaText: UITextField!
+    @IBOutlet weak var lengthView: UIView!
+    @IBOutlet weak var lengthText: UITextField!
+    @IBOutlet weak var widthView: UIView!
+    @IBOutlet weak var widthText: UITextField!
+    @IBOutlet weak var heightView: UIView!
+    @IBOutlet weak var heightText: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var placeButton: UIButton!
     
-    /// 270
+    /// 400
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     
-    private let INIT_HEI: CGFloat = 270
+    private let INIT_HEI: CGFloat = 400
     private var currentHei: CGFloat = 0
     
+    private var etaToPickup = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,11 +76,29 @@ class PlaceBidController: UIViewController {
         
         // Input Fields
         totalPriceView.setBorder()
-        
         totalPriceText.keyboardType = .numbersAndPunctuation
+        
+        etaView.setBorder()
+        let datePicker = UIDatePicker()
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .dateAndTime
+        datePicker.addTarget(self, action: #selector(onDateChanged(_:)), for: .valueChanged)
+        etaText.inputView = datePicker
+        
+        lengthView.setBorder()
+        lengthText.keyboardType = .numbersAndPunctuation
+        widthView.setBorder()
+        widthText.keyboardType = .numbersAndPunctuation
+        heightView.setBorder()
+        heightText.keyboardType = .numbersAndPunctuation
         
         cancelButton.setBorder(UIColor(named: "ViewBorderThick")!)
         placeButton.setBorder(UIColor(named: "TextGray")!)
+        
+        let user = User.user()
+        lengthText.text = "\(user.vehicle.length)"
+        widthText.text = "\(user.vehicle.width)"
+        heightText.text = "\(user.vehicle.height)"
     }
     
     private func hideContentViewWithCompletion(completion: ((Bool) -> Void)? = nil) {
@@ -127,6 +154,33 @@ class PlaceBidController: UIViewController {
                 arrViews.append(totalPriceView)
             }
         }
+        if let value = etaText.text, value.isEmpty {
+            arrViews.append(etaView)
+        }
+        if let value = lengthText.text {
+            if value.isEmpty {
+                arrViews.append(lengthView)
+            }
+            else if Double(value) == nil {
+                arrViews.append(lengthView)
+            }
+        }
+        if let value = widthText.text {
+            if value.isEmpty {
+                arrViews.append(widthView)
+            }
+            else if Double(value) == nil {
+                arrViews.append(widthView)
+            }
+        }
+        if let value = heightText.text {
+            if value.isEmpty {
+                arrViews.append(heightView)
+            }
+            else if Double(value) == nil {
+                arrViews.append(heightView)
+            }
+        }
         
         if arrViews.count > 0 {
             if let shaker = AFViewShaker(viewsArray: arrViews) {
@@ -146,11 +200,18 @@ class PlaceBidController: UIViewController {
         }
         
         let totalPrice = Double(totalPriceText.text!) ?? 0
+        let length = Double(lengthText.text!) ?? 0
+        let width = Double(widthText.text!) ?? 0
+        let height = Double(heightText.text!) ?? 0
         
         hideContentViewWithCompletion { finish in
             self.dismiss(animated: true) {
                 if let onPlacePrices = self.onPlacePrices {
-                    onPlacePrices(totalPrice)
+                    onPlacePrices(
+                        totalPrice,
+                        VehicleDimension(length: length, width: width, height: height),
+                        self.etaToPickup
+                    )
                 }
             }
         }
@@ -160,6 +221,12 @@ class PlaceBidController: UIViewController {
         hideContentViewWithCompletion { (finish) in
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @objc
+    private func onDateChanged(_ sender: UIDatePicker) {
+        etaToPickup = sender.date
+        etaText.text = DateFormatter.dateFormat4.string(from: sender.date)
     }
     
     @objc

@@ -205,14 +205,21 @@ class SignupViewController: UIViewController {
                 user.vehicle.width = width
                 user.vehicle.height = height
                 
-                FirebaseService.saveUserInfo(user: user) { error in
-                    if let error = error {
-                        print("====== saveUserInfo Error: \(error.localizedDescription)")
-                    }
-                    Alert.showAlert(Constants.appName, message: "Your account was created successfully!", from: self) { action in
-                        FirebaseService.logout()
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                FirebaseService.getLastUID { lastUID, error in
+                    user.uid = lastUID + 1
+                    
+                    FirebaseService.saveUserInfo(user: user) { error in
+                        MBProgressHUD.hide(for: self.view, animated: true)
                         
-                        self.navigationController?.popViewController(animated: true)
+                        if let error = error {
+                            print("====== saveUserInfo Error: \(error.localizedDescription)")
+                        }
+                        Alert.showAlert(Constants.appName, message: "Your account was created successfully!", from: self) { action in
+                            FirebaseService.logout()
+                            
+                            self.navigationController?.popViewController(animated: true)
+                        }
                     }
                 }
             }

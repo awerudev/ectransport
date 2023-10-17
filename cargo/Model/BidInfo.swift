@@ -21,6 +21,8 @@ struct BidInfo: Codable {
     var expireAt = ""
     
     var totalPrice: Double = 0
+    var vehicle = VehicleDimension()
+    var etaAt: TimeInterval = Date().timeIntervalSince1970
     var createdAt: TimeInterval = Date().timeIntervalSince1970
     
     init() {
@@ -78,6 +80,14 @@ struct BidInfo: Codable {
             totalPrice = value
         }
         
+        if let value = dic["vehicle"] as? [String: Any] {
+            vehicle = VehicleDimension(value)
+        }
+        
+        if let value = dic["etaAt"] as? TimeInterval {
+            etaAt = value
+        }
+        
         if let value = dic["createdAt"] as? TimeInterval {
             createdAt = value
         }
@@ -96,6 +106,8 @@ struct BidInfo: Codable {
             "dims"         : dims,
             "expireAt"     : expireAt,
             "totalPrice"   : totalPrice,
+            "vehicle"      : vehicle.jsonObj(),
+            "etaAt"        : etaAt,
             "createdAt"    : createdAt
         ]
     }

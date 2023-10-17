@@ -130,13 +130,15 @@ class BidDetailController: UIViewController {
         }
     }
     
-    private func placeBid() {
+    private func placeBid(vehicle: VehicleDimension, etaToPickup: Date) {
         guard let loadInfo = loadInfo else {
             return
         }
         
         var bid = loadInfo.toBidInfo()
         bid.totalPrice = bidPrice
+        bid.vehicle = vehicle
+        bid.etaAt = etaToPickup.timeIntervalSince1970
         
         MBProgressHUD.showAdded(to: view, animated: true)
         FirebaseService.addBid(bid) { error in
@@ -178,13 +180,13 @@ class BidDetailController: UIViewController {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "PlaceBidController") as? PlaceBidController else {
             return
         }
-        vc.onPlacePrices = { (total) in
-            self.bidPrice = total
+        vc.onPlacePrices = { (totalPrice, vehicle, etaToPickup) in
+            self.bidPrice = totalPrice
             
             self.tableView.reloadData()
             
             Alert.showAlert(Constants.appName, message: "Are you sure that you want to place a bid?", from: self) { yesAction in
-                self.placeBid()
+                self.placeBid(vehicle: vehicle, etaToPickup: etaToPickup)
             } negativeHandler: { noAction in
                 
             }

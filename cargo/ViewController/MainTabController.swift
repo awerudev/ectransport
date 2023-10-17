@@ -19,6 +19,8 @@ class MainTabController: UITabBarController {
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: Constants.notifyPresentBids), object: nil, queue: OperationQueue.main) { notification in
             self.selectedIndex = 1
         }
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyListenUserInfo), object: nil, userInfo: ["screen": "main"])
     }
     
 

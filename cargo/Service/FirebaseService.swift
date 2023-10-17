@@ -13,6 +13,10 @@ import FirebaseStorage
 
 class FirebaseService: NSObject {
     
+    public static let shared = FirebaseService()
+    
+    private var userListener: ListenerRegistration? = nil
+    
     // MARK: - Firestore
     
     static let users = Firestore.firestore().collection("users")
@@ -75,6 +79,13 @@ class FirebaseService: NSObject {
                 user.id = currentUserId
                 user.save()
                 
+                if user.uid == 0 {
+                    getLastUID { lastUID, error in
+                        user.uid = lastUID + 1
+                        user.save(sync: true)
+                    }
+                }
+                
                 NotificationCenter.default.post(name: Notification.Name(rawValue: Constants.notifyProfileUpdated), object: nil)
                 
                 completion?(user)
@@ -87,7 +98,12 @@ class FirebaseService: NSObject {
             return
         }
         
-        users.document(currentUserId).addSnapshotListener { docSnapshot, error in
+        if let listener = shared.userListener {
+            listener.remove()
+        }
+        
+        let userRef = users.document(currentUserId)
+        shared.userListener = userRef.addSnapshotListener { docSnapshot, error in
             if let error = error {
                 completion?(nil, error)
                 return
@@ -112,6 +128,25 @@ class FirebaseService: NSObject {
         }
         catch {
             print("======== logout Error: \(error.localizedDescription)")
+        }
+    }
+    
+    open class func getLastUID(completion: ((Int, Error?) -> Void)?) {
+        users.order(by: "uid", descending: false).limit(to: 1).getDocuments { querySnapshot, error in
+            if let error = error {
+                print("\(error.localizedDescription)")
+                completion?(0, error)
+                return
+            }
+            if let snapshot = querySnapshot {
+                var lastUID = 0
+                for doc in snapshot.documents {
+                    let user = User(doc.data())
+                    lastUID = user.uid
+                }
+                
+                completion?(lastUID, nil)
+            }
         }
     }
     
@@ -274,8 +309,8 @@ class FirebaseService: NSObject {
                     items = items.filter { item in
                         item.pickupAt.latitude > min.latitude
                         && item.pickupAt.longitude > min.longitude
-                        && item.deliverTo.latitude < max.latitude
-                        && item.deliverTo.longitude < max.longitude
+                        && item.pickupAt.latitude < max.latitude
+                        && item.pickupAt.longitude < max.longitude
                     }
                 }
                 
@@ -289,12 +324,35 @@ class FirebaseService: NSObject {
         }
     }
     
+    open class func getLastBids(completion: (([BidInfo], Error?) -> Void)?) {
+        guard let currentUserId = currentUserId else {
+            return
+        }
+        
+        let lastBidsRef = bids.document(currentUserId).collection("bids").order(by: "createdAt", descending: true).limit(to: 2)
+        lastBidsRef.getDocuments { querySnapshot, error in
+            if let error = error {
+                print("======== getBids Error: \(error.localizedDescription)")
+                completion?([], error)
+                return
+            }
+            if let querySnapshot = querySnapshot {
+                var items = [BidInfo]()
+                for doc in querySnapshot.documents {
+                    items.append(BidInfo(doc.data()))
+                }
+                completion?(items, nil)
+            }
+        }
+    }
+    
     open class func getBids(completion: (([BidInfo], Error?) -> Void)?) {
         guard let currentUserId = currentUserId else {
             return
         }
         
-        bids.document(currentUserId).collection("bids").order(by: "id", descending: true).getDocuments { querySnapshot, error in
+        let lastBidsRef = bids.document(currentUserId).collection("bids").order(by: "createdAt", descending: true)
+        lastBidsRef.getDocuments { querySnapshot, error in
             if let error = error {
                 print("======== getBids Error: \(error.localizedDescription)")
                 completion?([], error)
