@@ -22,7 +22,7 @@ struct BidInfo: Codable {
     
     var totalPrice: Double = 0
     var vehicle = VehicleDimension()
-    var etaAt: TimeInterval = Date().timeIntervalSince1970
+    var etaAt = ""
     var createdAt: TimeInterval = Date().timeIntervalSince1970
     
     init() {
@@ -84,7 +84,7 @@ struct BidInfo: Codable {
             vehicle = VehicleDimension(value)
         }
         
-        if let value = dic["etaAt"] as? TimeInterval {
+        if let value = dic["etaAt"] as? String {
             etaAt = value
         }
         

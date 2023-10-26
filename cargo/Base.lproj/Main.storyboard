@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cyC-wt-MPn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cyC-wt-MPn">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -569,6 +569,16 @@
                                             <action selector="onClickFilter:" destination="Yum-YJ-tOc" eventType="touchUpInside" id="Hk5-5P-hfZ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xej-b6-CDG">
+                                        <rect key="frame" x="262" y="8" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" name="TextGray"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="map.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="onClickMap:" destination="Yum-YJ-tOc" eventType="touchUpInside" id="aww-R6-EZ4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1074,14 +1084,14 @@
                                                             <color key="textColor" name="TextLightGray"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubG-y6-toj">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="ubG-y6-toj">
                                                             <rect key="frame" x="179" y="64" width="179" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                                             <color key="textColor" name="TextDark"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Large Straight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fnb-ob-QKQ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Large Straight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Fnb-ob-QKQ">
                                                             <rect key="frame" x="0.0" y="114" width="179" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
@@ -1368,7 +1378,7 @@
                                                 <color key="backgroundColor" name="InputBackground"/>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGA-3C-gEw" userLabel="Bottom">
                                         <rect key="frame" x="0.0" y="300" width="390" height="65"/>
@@ -1564,6 +1574,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lb6-zA-TxX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4604.6153846153848" y="1399.0521327014217"/>
+        </scene>
+        <!--Load Map Controller-->
+        <scene sceneID="2DB-9z-NDJ">
+            <objects>
+                <viewController storyboardIdentifier="LoadMapController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wAr-pK-HcA" customClass="LoadMapController" customModule="cargo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kaJ-av-2KZ">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gf-yN-zTj" userLabel="Background" customClass="GradientView" customModule="cargo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pr7-tc-bBJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                        <standardMapConfiguration key="preferredConfiguration"/>
+                                    </mapView>
+                                </subviews>
+                                <color key="backgroundColor" name="TextGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pr7-tc-bBJ" secondAttribute="bottom" id="ZoZ-v7-x8W"/>
+                                    <constraint firstAttribute="trailing" secondItem="pr7-tc-bBJ" secondAttribute="trailing" id="fv6-ny-5TK"/>
+                                    <constraint firstItem="pr7-tc-bBJ" firstAttribute="top" secondItem="7gf-yN-zTj" secondAttribute="top" id="j0G-5X-reA"/>
+                                    <constraint firstItem="pr7-tc-bBJ" firstAttribute="leading" secondItem="7gf-yN-zTj" secondAttribute="leading" id="rlb-70-Mgx"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" name="TextGray"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" name="TextDark"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bCs-Ah-wH5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="7gf-yN-zTj" secondAttribute="bottom" id="6a3-0N-hj6"/>
+                            <constraint firstItem="7gf-yN-zTj" firstAttribute="top" secondItem="kaJ-av-2KZ" secondAttribute="top" id="khB-Ht-LXb"/>
+                            <constraint firstItem="7gf-yN-zTj" firstAttribute="trailing" secondItem="bCs-Ah-wH5" secondAttribute="trailing" id="vKu-Kb-qsW"/>
+                            <constraint firstItem="7gf-yN-zTj" firstAttribute="leading" secondItem="bCs-Ah-wH5" secondAttribute="leading" id="z9r-Xe-xUG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="pr7-tc-bBJ" id="F63-wX-8jh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K8K-Y8-zE0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5264.6153846153848" y="1399.0521327014217"/>
         </scene>
         <!--Chats View Controller-->
         <scene sceneID="Ige-s6-wVl">
@@ -3833,6 +3893,7 @@ address below?</string>
         <image name="circle.dashed.inset.filled" catalog="system" width="128" height="123"/>
         <image name="clock" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

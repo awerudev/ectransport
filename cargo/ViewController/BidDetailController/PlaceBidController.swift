@@ -10,7 +10,7 @@ import AFViewShaker
 
 class PlaceBidController: UIViewController {
     
-    var onPlacePrices: ((Double, VehicleDimension, Date) -> Void)?
+    var onPlacePrices: ((Double, VehicleDimension, String) -> Void)?
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var contentView: UIView!
@@ -33,7 +33,7 @@ class PlaceBidController: UIViewController {
     private let INIT_HEI: CGFloat = 400
     private var currentHei: CGFloat = 0
     
-    private var etaToPickup = Date()
+//    private var etaToPickup = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,11 +79,12 @@ class PlaceBidController: UIViewController {
         totalPriceText.keyboardType = .numbersAndPunctuation
         
         etaView.setBorder()
-        let datePicker = UIDatePicker()
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.datePickerMode = .dateAndTime
-        datePicker.addTarget(self, action: #selector(onDateChanged(_:)), for: .valueChanged)
-        etaText.inputView = datePicker
+        etaText.keyboardType = .default
+//        let datePicker = UIDatePicker()
+//        datePicker.preferredDatePickerStyle = .wheels
+//        datePicker.datePickerMode = .dateAndTime
+//        datePicker.addTarget(self, action: #selector(onDateChanged(_:)), for: .valueChanged)
+//        etaText.inputView = datePicker
         
         lengthView.setBorder()
         lengthText.keyboardType = .numbersAndPunctuation
@@ -203,6 +204,7 @@ class PlaceBidController: UIViewController {
         let length = Double(lengthText.text!) ?? 0
         let width = Double(widthText.text!) ?? 0
         let height = Double(heightText.text!) ?? 0
+        let etaToPickup = etaText.text ?? ""
         
         hideContentViewWithCompletion { finish in
             self.dismiss(animated: true) {
@@ -210,7 +212,7 @@ class PlaceBidController: UIViewController {
                     onPlacePrices(
                         totalPrice,
                         VehicleDimension(length: length, width: width, height: height),
-                        self.etaToPickup
+                        etaToPickup
                     )
                 }
             }
@@ -223,11 +225,11 @@ class PlaceBidController: UIViewController {
         }
     }
     
-    @objc
-    private func onDateChanged(_ sender: UIDatePicker) {
-        etaToPickup = sender.date
-        etaText.text = DateFormatter.dateFormat4.string(from: sender.date)
-    }
+//    @objc
+//    private func onDateChanged(_ sender: UIDatePicker) {
+//        etaToPickup = sender.date
+//        etaText.text = DateFormatter.dateFormat4.string(from: sender.date)
+//    }
     
     @objc
     private func onTapBackground(_ sender: Any) {

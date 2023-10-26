@@ -78,8 +78,8 @@ struct User: Codable {
     var longitude: CLLocationDegrees = 0
     var availability: UserAvailability = .notAvailable
     
-    // Filter between 10 and 200
-    var distance: Int = 200 // Miles 1 mile = 1609.34 meter
+    /// Filter between 10 and 200 miles
+    var distance: Int = 200 // Miles: 1 mile = 1609.34 meter
     
     init() {
         

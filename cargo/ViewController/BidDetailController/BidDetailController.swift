@@ -27,7 +27,7 @@ class BidDetailController: UIViewController {
     
     private var bidPrice: Double = 0
     
-    private var isMoreInfo = false
+    private var isMoreInfo = true
     
     // MARK: - Method
     
@@ -130,7 +130,7 @@ class BidDetailController: UIViewController {
         }
     }
     
-    private func placeBid(vehicle: VehicleDimension, etaToPickup: Date) {
+    private func placeBid(vehicle: VehicleDimension, etaToPickup: String) {
         guard let loadInfo = loadInfo else {
             return
         }
@@ -138,7 +138,7 @@ class BidDetailController: UIViewController {
         var bid = loadInfo.toBidInfo()
         bid.totalPrice = bidPrice
         bid.vehicle = vehicle
-        bid.etaAt = etaToPickup.timeIntervalSince1970
+        bid.etaAt = etaToPickup
         
         MBProgressHUD.showAdded(to: view, animated: true)
         FirebaseService.addBid(bid) { error in
@@ -241,17 +241,18 @@ extension BidDetailController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BidMoreInfoCell", for: indexPath) as! BidMoreInfoCell
         
-        cell.expandButton.addTarget(self, action: #selector(onClickMoreInfo(_:)), for: .touchUpInside)
-        if isMoreInfo {
+//        cell.expandButton.addTarget(self, action: #selector(onClickMoreInfo(_:)), for: .touchUpInside)
+//        if isMoreInfo {
             cell.expandButton.isSelected = true
+        cell.expandButton.isHidden = true
             cell.infoView.isHidden = false
             cell.infoViewHeight.constant = 140
-        }
-        else {
-            cell.expandButton.isSelected = false
-            cell.infoView.isHidden = true
-            cell.infoViewHeight.constant = 0
-        }
+//        }
+//        else {
+//            cell.expandButton.isSelected = false
+//            cell.infoView.isHidden = true
+//            cell.infoViewHeight.constant = 0
+//        }
         cell.layoutIfNeeded()
         
         if let loadInfo = loadInfo {

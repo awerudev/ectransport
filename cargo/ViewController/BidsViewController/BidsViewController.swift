@@ -25,6 +25,8 @@ class BidsViewController: UIViewController {
     private var lastLoadID: Int = 0
     private var loadList = [LoadData]()
     
+    private var refreshTimer: Timer? = nil
+    
     // MARK: - Method
     
     override func viewDidLoad() {
@@ -122,8 +124,8 @@ class BidsViewController: UIViewController {
             // Calculate the maximum and minimum coordinates
             let region = MKCoordinateRegion(center: currentLocation, latitudinalMeters: radius, longitudinalMeters: radius)
 
-            maxCoordinate = CLLocationCoordinate2D(latitude: currentLocation.latitude + region.span.latitudeDelta / 2, longitude: currentLocation.longitude + region.span.longitudeDelta / 2)
             minCoordinate = CLLocationCoordinate2D(latitude: currentLocation.latitude - region.span.latitudeDelta / 2, longitude: currentLocation.longitude - region.span.longitudeDelta / 2)
+            maxCoordinate = CLLocationCoordinate2D(latitude: currentLocation.latitude + region.span.latitudeDelta / 2, longitude: currentLocation.longitude + region.span.longitudeDelta / 2)
             print("============ Min: \(minCoordinate), Max: \(maxCoordinate)")
         }
         
@@ -142,13 +144,21 @@ class BidsViewController: UIViewController {
             }
             self.loadList.append(contentsOf: items)
             self.tableView.reloadData()
+            
+            // Refresh Loads after 5 minutes
+            if let timer = self.refreshTimer {
+                timer.invalidate()
+                self.refreshTimer = nil
+            }
+            print("Refresh Timer Scheduled...")
+            self.refreshTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.onRefresh(_:)), userInfo: nil, repeats: true)
         }
     }
     
     // MARK: - Action
     
     @objc
-    private func onRefresh(_ sender: UIRefreshControl) {
+    private func onRefresh(_ sender: Any) {
         lastLoadID = 0
         getLoads()
     }
@@ -169,6 +179,15 @@ class BidsViewController: UIViewController {
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true)
+    }
+    
+    @IBAction func onClickMap(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "LoadMapController") as? LoadMapController else {
+            return
+        }
+        
+        vc.loadList = loadList
+        present(BaseNavigationController(rootViewController: vc), animated: true)
     }
     
     @objc
